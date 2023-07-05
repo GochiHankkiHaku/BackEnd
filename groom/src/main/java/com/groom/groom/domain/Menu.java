@@ -1,6 +1,7 @@
 package com.groom.groom.domain;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,5 +29,11 @@ public class Menu {
     private String content;
 
     //이미지도 시간 남으면?
+
+    @Builder
+    public Menu(String name, String content){
+        this.name=name;
+        this.content=content;
+    }
 
 }
