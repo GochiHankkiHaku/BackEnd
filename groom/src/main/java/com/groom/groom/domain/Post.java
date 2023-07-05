@@ -44,7 +44,8 @@ public class Post extends BaseTimeEntity {
     @Schema(description = "아이템 리스트", example = "[\"고기\", \"생선\"]")
     private List<String> item;
 
-    @Column(length = 100, nullable = false)
+    //nullable = false 추가하고 분류 정해지면 추가
+    @Column(length = 100)
     @Schema(description = "분류", example = "어패류")
     private String category;
 
