@@ -68,7 +68,7 @@ public class SetupContorller {
         post2.setDate("오늘");
         post2.setTime("점심");
         post2.setNumber(2);
-        post2.setApplication(0);
+        post2.setApplication(1);
         List<String> item2 = new ArrayList<>();
         item2.add("어류");
         post2.setItem(item2);
@@ -84,7 +84,7 @@ public class SetupContorller {
         post3.setDate("오늘");
         post3.setTime("저녁");
         post3.setNumber(3);
-        post3.setApplication(0);
+        post3.setApplication(1);
         List<String> item3 = new ArrayList<>();
         item3.add("어류");
         item3.add("과일");
@@ -101,7 +101,7 @@ public class SetupContorller {
         post4.setDate("내일");
         post4.setTime("아침");
         post4.setNumber(4);
-        post4.setApplication(0);
+        post4.setApplication(2);
         List<String> item4 = new ArrayList<>();
         item4.add("채소");
         post4.setItem(item4);
@@ -117,7 +117,7 @@ public class SetupContorller {
         post5.setDate("내일");
         post5.setTime("점심");
         post5.setNumber(2);
-        post5.setApplication(0);
+        post5.setApplication(1);
         List<String> item5 = new ArrayList<>();
         item5.add("육류");
         post5.setItem(item5);
