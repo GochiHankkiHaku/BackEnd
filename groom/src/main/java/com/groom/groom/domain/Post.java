@@ -59,15 +59,24 @@ public class Post extends BaseTimeEntity {
     @Column(length = 100)
     @Schema(description = "분류", example = "어패류")
     private String category;
+    @Column(nullable = false)
+    @Schema(description = "위도", example = "33.449701")
+    private float lat;
 
-    //위치정보 추가하기
+    @Column(nullable = false)
+    @Schema(description = "경도", example = "126.917109")
+    private float lng;
+
+    @Column(length = 50, nullable = true)
+    @Schema(description = "도로명주소", example = "제주도 제주시~~~")
+    private String address;
 
 
     @Column(nullable = false)
     @Schema(description = "글 상태", example = "N")
     private char status;
     @Builder
-    public Post(Users user, Menu menu, String content, String time, int number, List<String> item, String category, char status){
+    public Post(Users user, Menu menu, String content, String time, int number, List<String> item, String category, float lat, float lng, char status){
         this.menu=menu;
         this.user=user;
         this.content=content;
@@ -75,6 +84,8 @@ public class Post extends BaseTimeEntity {
         this.number=number;
         this.item=item;
         this.category=category;
+        this.lat=lat;
+        this.lng=lng;
         this.status=status;
     }
 

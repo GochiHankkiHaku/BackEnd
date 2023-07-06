@@ -28,6 +28,9 @@ public class PostResponseDto {
     private int application;
     @Schema(description = "주 재료", example = "갈치")
     private List<String> item;
+    @Schema(description = "도로명주소", example = "제주도 제주시~~~")
+    private String address;
+
     @Schema(description = "상태", example = "C")
     private char status;
     public PostResponseDto(@NotNull Post entity){
@@ -38,6 +41,7 @@ public class PostResponseDto {
         this.number=entity.getNumber();
         this.application=entity.getApplication();
         this.item=entity.getItem();
+        this.address=entity.getAddress();
         this.status = entity.getStatus();
     }
 }
