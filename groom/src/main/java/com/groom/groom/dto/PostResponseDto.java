@@ -28,7 +28,8 @@ public class PostResponseDto {
     private int application;
     @Schema(description = "주 재료", example = "갈치")
     private List<String> item;
-
+    @Schema(description = "상태", example = "C")
+    private char status;
     public PostResponseDto(@NotNull Post entity){
         this.menuname = entity.getMenu().getName();
         this.menucontent=entity.getMenu().getContent();
@@ -37,5 +38,6 @@ public class PostResponseDto {
         this.number=entity.getNumber();
         this.application=entity.getApplication();
         this.item=entity.getItem();
+        this.status = entity.getStatus();
     }
 }

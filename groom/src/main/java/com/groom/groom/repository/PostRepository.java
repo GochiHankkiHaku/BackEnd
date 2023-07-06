@@ -9,5 +9,7 @@ import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post, Integer> {
     List<Post> findALlByStatus(char flag);
+    List<Post> findAllByStatusNot(char flag);
+
 
 }

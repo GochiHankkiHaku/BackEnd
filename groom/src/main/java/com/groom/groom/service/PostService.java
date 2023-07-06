@@ -76,8 +76,8 @@ public class PostService {
 
     //맵 상세정보 리스트
     @Transactional
-    public List<PostListDto> findByPost_status(char flag){
-        List<Post> list = postRepository.findALlByStatus(flag);
+    public List<PostListDto> findByPost_notstatus(char flag){
+        List<Post> list = postRepository.findAllByStatusNot(flag);
         return list.stream().map(PostListDto::new).collect(Collectors.toList());
     }
 
