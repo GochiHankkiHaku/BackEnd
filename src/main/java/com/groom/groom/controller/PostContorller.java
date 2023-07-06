@@ -22,7 +22,6 @@ import java.util.stream.Collectors;
 @RequestMapping("/post")
 public class PostContorller {
     private final PostService postService;
-    private final MarketService marketService;
 
     @PostMapping("/write")
     @Operation(summary = "post/write", description = "매칭 게시글 작성")
@@ -31,13 +30,7 @@ public class PostContorller {
         return ResponseEntity.status(HttpStatus.CREATED).body(post);
     }
 
-    //시장 보기
-    @GetMapping("/listmarket")
-    @Operation(summary = "post/listmarket", description = "게시글 시장")
-    public ResponseEntity<List<Market>> findAllMarket() {
-        List<Market> marketList = marketService.getAllMarkets();
-        return ResponseEntity.status(HttpStatus.OK).body(marketList);
-    }
+
     //게시글 전체보기
     @GetMapping("/listall")
     @Operation(summary = "post/listall", description = "게시글 전체보기, 기본 최신순")
