@@ -13,6 +13,7 @@ import com.groom.groom.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -80,6 +81,43 @@ public class PostService {
         List<Post> list = postRepository.findAllByStatusNot(flag);
         return list.stream().map(PostListDto::new).collect(Collectors.toList());
     }
+
+    public List<Post> findPostsNearby(float userLat, float userLng) {
+        List<Post> allPosts = postRepository.findAll();  // 모든 게시글 조회
+
+        List<Post> nearbyPosts = new ArrayList<>();
+        for (Post post : allPosts) {
+            float postLat = post.getLat();  // 게시글의 위도
+            float postLng = post.getLng();  // 게시글의 경도
+
+            double distance = calculateDistance(userLat, userLng, postLat, postLng);
+            if (distance <= 1.0) {  // 1km 반경 내에 있는 게시글인 경우
+                nearbyPosts.add(post);
+            }
+        }
+
+        return nearbyPosts;
+    }
+    public static final double EARTH_RADIUS = 6371.0;
+
+    public double calculateDistance(float lat1, float lng1, float lat2, float lng2) {
+        double lat1Rad = Math.toRadians(lat1);
+        double lng1Rad = Math.toRadians(lng1);
+        double lat2Rad = Math.toRadians(lat2);
+        double lng2Rad = Math.toRadians(lng2);
+
+        double deltaLat = lat2Rad - lat1Rad;
+        double deltaLng = lng2Rad - lng1Rad;
+
+        double a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2)
+                + Math.cos(lat1Rad) * Math.cos(lat2Rad)
+                * Math.sin(deltaLng / 2) * Math.sin(deltaLng / 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        double distance = EARTH_RADIUS * c;
+        return distance;
+    }
+
 
     //상세 정보
     @Transactional
