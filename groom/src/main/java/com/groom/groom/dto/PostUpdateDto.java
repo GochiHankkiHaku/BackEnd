@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class PostUpdateDto {
-    private Menu menu;
+    private String menuname;
     private String content;
     private String time;
     private int number;
@@ -19,9 +19,9 @@ public class PostUpdateDto {
     private String category;
 
     @Builder
-    public PostUpdateDto(Menu menu, String content, String time, int number,
+    public PostUpdateDto(String menuname, String content, String time, int number,
                          List<String> item, String category){
-        this.menu = menu;
+        this.menuname = menuname;
         this. content=content;
         this.time=time;
         this.number=number;

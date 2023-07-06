@@ -65,7 +65,8 @@ public class PostService {
     @Transactional
     public Post update(int idx, PostUpdateDto requestDto){
         Post post = postRepository.findById(idx).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id="+idx));
-        post.update(requestDto.getMenu(),requestDto.getContent(),  requestDto.getTime(),requestDto.getNumber(), requestDto.getItem(), requestDto.getCategory());
+        Menu menu = menuRepository.findByName(requestDto.getMenuname()); // 메뉴 이름으로 메뉴 조회
+        post.update(menu,requestDto.getContent(),  requestDto.getTime(),requestDto.getNumber(), requestDto.getItem(), requestDto.getCategory());
         return post;
     }
     //삭제

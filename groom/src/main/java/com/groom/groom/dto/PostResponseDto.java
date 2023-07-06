@@ -5,29 +5,32 @@ import com.groom.groom.domain.Post;
 import com.groom.groom.domain.Users;
 import com.groom.groom.repository.PostRepository;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 
+@NoArgsConstructor
+@Getter
 public class PostResponseDto {
-    @Schema(description = "유저", example = "a")
-    private Users user;
-
     @Schema(description = "메뉴", example = "갈치조림")
-    private Menu menu;
-
+    private String menuname;
+    @Schema(description = "메뉴설명", example = "갈치조림은 고추장에~~")
+    private String menucontent;
     @Schema(description = "본문", example = "본문내용")
     private String content;
     @Schema(description = "시간", example = "내일 오전")
     private String time;
-    @Schema(description = "인원", example = "1")
+    @Schema(description = "인원", example = "2")
     private int number;
-
+    @Schema(description = "신청인원", example = "1")
+    private int application;
     public PostResponseDto(@NotNull Post entity){
-        this.user = entity.getUser();
-        this.menu = entity.getMenu();
+        this.menuname = entity.getMenu().getName();
+        this.menucontent=entity.getMenu().getContent();
         this.content = entity.getContent();
         this.time= entity.getTime();
         this.number=entity.getNumber();
+        this.application=entity.getApplication();
     }
-
 }
