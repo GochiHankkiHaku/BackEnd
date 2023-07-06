@@ -24,9 +24,9 @@ public class PostService {
     private final UsersRepository usersRepository;
     private final MenuRepository menuRepository;
 
-    @Transactional
-    public Post save(PostSaveDto postSaveDto){
 
+    @Transactional
+    public Post save(PostSaveDto postSaveDto) {
         Users user = new Users();
         user.setId("a");
         usersRepository.save(user);
@@ -37,9 +37,14 @@ public class PostService {
         if (menu == null) {
             // 메뉴가 존재하지 않는 경우에 대한 예외 처리
             throw new IllegalArgumentException("해당 메뉴를 찾을 수 없습니다: " + menuname);
+        } else if ("구살국(성게국)".equals(menuname)) {
+            postSaveDto.setImg("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png");
+        } else if ("자리돔조림".equals(menuname)) {
+            postSaveDto.setImg("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%8C%E1%85%A1%E1%84%85%E1%85%B5%E1%84%83%E1%85%A9%E1%86%B7%E1%84%8C%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7.png");
+        } else if ("한치 물회 덮밥".equals(menuname)) {
+            postSaveDto.setImg("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/%EB%8C%80%EC%A7%80%201%20%EC%82%AC%EB%B3%B8%209.png");
         }
 
-        List<String> items = postSaveDto.getItem();
         Post post = postSaveDto.toEntity();
         post.setMenu(menu);
 
@@ -95,6 +100,7 @@ public class PostService {
     @Transactional
     public PostResponseDto findById(int idx){
         Post entity= postRepository.findById(idx).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id="+idx));
+        System.out.print(entity.getMenu().getItem()); // item 로딩
         return new PostResponseDto(entity);
     }
 
@@ -103,7 +109,7 @@ public class PostService {
     public Post update(int idx, PostUpdateDto requestDto){
         Post post = postRepository.findById(idx).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id="+idx));
         Menu menu = menuRepository.findByName(requestDto.getMenuname()); // 메뉴 이름으로 메뉴 조회
-        post.update(menu,requestDto.getDate(), requestDto.getTime(),requestDto.getNumber(), requestDto.getItem());
+        post.update(menu,requestDto.getDate(), requestDto.getTime(),requestDto.getNumber());
         return post;
     }
     //삭제

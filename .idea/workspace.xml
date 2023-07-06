@@ -78,7 +78,7 @@
     "spring.configuration.checksum": "2e4ac5b1b22ebfd73ab979e07efe1b19",
     "vue.rearranger.settings.migration": "true"
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Spring Boot.GroomApplication (2)">
     <configuration name="GroomApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="groom.groom.main~1" />
