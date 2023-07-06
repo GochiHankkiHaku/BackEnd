@@ -26,8 +26,6 @@ public class PostSaveDto {
     private String time;
     @Schema(description = "인원", example = "1")
     private int number;
-    @Schema(description = "주 재료", example = "갈치")
-    private List<String> item;
     @Schema(description = "위도", example = "33.449701")
     private double lat;
     @Schema(description = "경도", example = "126.917109")
@@ -36,18 +34,19 @@ public class PostSaveDto {
     private String address;
     @Schema(description = "상태", example = "N")
     private char status;
-
+    @Schema(description = "비용", example = "20000")
+    private int money;
     public Post toEntity(){
         return Post.builder()
                 .user(user)
                 .date(date)
                 .time(time)
                 .number(number)
-                .item(item)
                 .lat(lat)
                 .lng(lng)
                 .status(status)
                 .status('N')
+                .money(money)
                 .build();
     }
     public void setUser(Users user) {this.user = user;}

@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -23,8 +24,6 @@ public class PostListDto {
     private int number;
     @Schema(description = "신청인원", example = "2")
     private int application;
-    @Schema(description = "필요 재료", example = "[\"고기\", \"생선\"]")
-    private List<String> item;
     @Schema(description = "도로명주소", example = "제주도 제주시~~~")
     private String address;
     @Schema(description = "상태", example = "C")
@@ -33,6 +32,8 @@ public class PostListDto {
     private double lat;
     @Schema(description = "경도", example = "126.918558")
     private double lng;
+    @Schema(description = "비용", example = "20000")
+    private int money;
     public PostListDto(@NotNull Post entity){
         this.post_idx=entity.getIdx();
         this.menuname = entity.getMenu().getName();
@@ -40,11 +41,11 @@ public class PostListDto {
         this.time = entity.getTime();
         this.number= entity.getNumber();
         this.application=entity.getApplication();
-        this.item=entity.getItem();
         this.address=entity.getAddress();
         this.status=entity.getStatus();
         this.lat=entity.getLat();
         this.lng=entity.getLng();
+        this.money=entity.getMoney();
     }
 
 }
