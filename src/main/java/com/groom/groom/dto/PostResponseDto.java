@@ -30,9 +30,12 @@ public class PostResponseDto {
     private List<String> item;
     @Schema(description = "도로명주소", example = "제주도 제주시~~~")
     private String address;
-
+    @Schema(description = "비용", example = "20000")
+    private int money;
     @Schema(description = "상태", example = "C")
     private char status;
+    @Schema(description = "이미지", example = "https:///~~~")
+    private String img;
     public PostResponseDto(@NotNull Post entity){
         this.menuname = entity.getMenu().getName();
         this.menucontent=entity.getMenu().getContent();
@@ -40,8 +43,12 @@ public class PostResponseDto {
         this.time= entity.getTime();
         this.number=entity.getNumber();
         this.application=entity.getApplication();
-        this.item=entity.getItem();
+        this.item=entity.getMenu().getItem();
         this.address=entity.getAddress();
         this.status = entity.getStatus();
+        this.money=entity.getMoney();
+        this.img=entity.getImg();
     }
+
+
 }
