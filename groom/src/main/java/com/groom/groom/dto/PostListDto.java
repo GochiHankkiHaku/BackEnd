@@ -21,7 +21,8 @@ public class PostListDto {
     private int application;
     @Schema(description = "필요 재료", example = "[\"고기\", \"생선\"]")
     private List<String> item;
-
+    @Schema(description = "도로명주소", example = "제주도 제주시~~~")
+    private String address;
 
     public PostListDto(@NotNull Post entity){
         this.content = entity.getContent();
@@ -29,6 +30,7 @@ public class PostListDto {
         this.number= entity.getNumber();
         this.application=entity.getApplication();
         this.item=entity.getItem();
+        this.address=entity.getAddress();
     }
 
 }

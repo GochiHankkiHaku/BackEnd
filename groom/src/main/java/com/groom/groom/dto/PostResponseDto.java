@@ -28,6 +28,8 @@ public class PostResponseDto {
     private int application;
     @Schema(description = "주 재료", example = "갈치")
     private List<String> item;
+    @Schema(description = "도로명주소", example = "제주도 제주시~~~")
+    private String address;
 
     public PostResponseDto(@NotNull Post entity){
         this.menuname = entity.getMenu().getName();
@@ -37,5 +39,6 @@ public class PostResponseDto {
         this.number=entity.getNumber();
         this.application=entity.getApplication();
         this.item=entity.getItem();
+        this.address=entity.getAddress();
     }
 }

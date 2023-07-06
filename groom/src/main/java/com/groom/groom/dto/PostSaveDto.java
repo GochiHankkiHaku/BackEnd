@@ -30,6 +30,13 @@ public class PostSaveDto {
     private List<String> item;
     @Schema(description = "분류", example = "어패류")
     private String category;
+    @Schema(description = "위도", example = "33.449701")
+    private float lat;
+    @Schema(description = "경도", example = "126.917109")
+    private float lng;
+    @Schema(description = "도로명주소", example = "제주도 제주시~~~")
+    private String address;
+
     @Schema(description = "상태", example = "N")
     private char status;
 
@@ -40,6 +47,8 @@ public class PostSaveDto {
                 .time(time)
                 .number(number)
                 .item(item)
+                .lat(lat)
+                .lng(lng)
                 .status(status)
                 .status('N')
                 .build();
