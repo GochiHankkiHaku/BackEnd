@@ -56,10 +56,6 @@ public class Post extends BaseTimeEntity {
     @Schema(description = "아이템 리스트", example = "[\"고기\", \"생선\"]")
     private List<String> item;
 
-    //nullable = false 추가하고 분류 정해지면 추가
-    @Column(length = 100)
-    @Schema(description = "분류", example = "어패류")
-    private String category;
     @Column(nullable = false)
     @Schema(description = "위도", example = "33.449701")
     private float lat;
@@ -77,14 +73,13 @@ public class Post extends BaseTimeEntity {
     @Schema(description = "글 상태", example = "N")
     private char status;
     @Builder
-    public Post(Users user, Menu menu, String content, String time, int number, List<String> item, String category, float lat, float lng, char status){
+    public Post(Users user, Menu menu, String content, String time, int number, List<String> item, float lat, float lng, char status){
         this.menu=menu;
         this.user=user;
         this.content=content;
         this.time=time;
         this.number=number;
         this.item=item;
-        this.category=category;
         this.lat=lat;
         this.lng=lng;
         this.status=status;
@@ -96,7 +91,6 @@ public class Post extends BaseTimeEntity {
         this.time=time;
         this.number=number;
         this.item=item;
-        this.category=category;
     }
     public void delete(){
         this.status = 'D';
