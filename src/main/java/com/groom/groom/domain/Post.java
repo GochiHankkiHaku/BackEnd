@@ -50,12 +50,6 @@ public class Post extends BaseTimeEntity {
     @Schema(description = "신청인원", example = "1")
     private int application;
 
-    @Column(name = "item")
-    @ElementCollection
-    @CollectionTable(name = "post_item", joinColumns = @JoinColumn(name = "post_idx"))
-    @Schema(description = "아이템 리스트", example = "[\"고기\", \"생선\"]")
-    private List<String> item;
-
     @Column(nullable = false)
     @Schema(description = "위도", example = "33.449701")
     private double lat;
@@ -68,29 +62,35 @@ public class Post extends BaseTimeEntity {
     @Schema(description = "도로명주소", example = "제주도 제주시~~~")
     private String address;
 
+    @Column(nullable = false)
+    @Schema(description = "비용", example = "20000")
+    private int money;
 
     @Column(nullable = false)
     @Schema(description = "글 상태", example = "N")
     private char status;
     @Builder
-    public Post(Users user, Menu menu, String date, String time, int number, List<String> item, double lat, double lng, char status){
+    public Post(Users user, Menu menu, String date, String time, int number, int application,
+                double lat, double lng, String address,
+                int money, char status){
         this.menu=menu;
         this.user=user;
         this.date=date;
         this.time=time;
         this.number=number;
-        this.item=item;
+        this.application =application;
         this.lat=lat;
         this.lng=lng;
+        this.address=address;
+        this.money=money;
         this.status=status;
     }
 
-    public void update(Menu menu, String date, String time, int number, List<String> item){
+    public void update(Menu menu, String date, String time, int number){
         this.menu=menu;
         this.date = date;
         this.time=time;
         this.number=number;
-        this.item=item;
     }
     public void delete(){
         this.status = 'D';

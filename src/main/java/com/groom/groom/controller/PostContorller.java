@@ -13,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +29,7 @@ public class PostContorller {
         Post post = postService.save(requestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(post);
     }
+
 
     //게시글 전체보기
     @GetMapping("/listall")

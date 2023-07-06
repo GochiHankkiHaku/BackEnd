@@ -39,7 +39,6 @@ public class PostService {
             throw new IllegalArgumentException("해당 메뉴를 찾을 수 없습니다: " + menuname);
         }
 
-        List<String> items = postSaveDto.getItem();
         Post post = postSaveDto.toEntity();
         post.setMenu(menu);
 
@@ -95,6 +94,7 @@ public class PostService {
     @Transactional
     public PostResponseDto findById(int idx){
         Post entity= postRepository.findById(idx).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id="+idx));
+        System.out.print(entity.getMenu().getItem()); // item 로딩
         return new PostResponseDto(entity);
     }
 
@@ -103,7 +103,7 @@ public class PostService {
     public Post update(int idx, PostUpdateDto requestDto){
         Post post = postRepository.findById(idx).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id="+idx));
         Menu menu = menuRepository.findByName(requestDto.getMenuname()); // 메뉴 이름으로 메뉴 조회
-        post.update(menu,requestDto.getDate(), requestDto.getTime(),requestDto.getNumber(), requestDto.getItem());
+        post.update(menu,requestDto.getDate(), requestDto.getTime(),requestDto.getNumber());
         return post;
     }
     //삭제
