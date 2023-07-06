@@ -104,6 +104,8 @@ public class Post extends BaseTimeEntity {
     public void complete(){
         this.status = 'C';
     }
+    public void increaseApplication(){
+        this.application++;
+    }
 
-    //public void setCategory() {} -> 카테고리 설정
 }

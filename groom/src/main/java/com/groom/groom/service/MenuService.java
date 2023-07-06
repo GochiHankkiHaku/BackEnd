@@ -23,6 +23,5 @@ public class MenuService {
         Menu menu = menuSaveDto.toEntity();
         menuRepository.save(menu);
         return menu;
-
     }
 }

@@ -33,8 +33,8 @@ public class PostContorller {
     @GetMapping("/listall")
     @Operation(summary = "post/listall", description = "게시글 전체보기, 기본 최신순")
     public ResponseEntity<List<PostListDto>> findAllPosts(){
-        char flag = 'N';
-        List<PostListDto> list = postService.findByPost_status(flag);
+        char flag = 'D';
+        List<PostListDto> list = postService.findByPost_notstatus(flag);
         return ResponseEntity.status(HttpStatus.CREATED).body(list);
     }
 
