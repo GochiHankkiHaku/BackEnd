@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Tag(name = "matching", description = "매칭")
 @RestController
@@ -30,8 +31,6 @@ public class MatchingContorller {
         Post post= postRepository.findById(post_idx).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id="+post_idx));
 
         if (post.getApplication() == post.getNumber()){
-            post.complete();
-            postRepository.save(post);
             throw new IllegalStateException("모집 마감된 게시글입니다.");
         }
 
@@ -46,18 +45,22 @@ public class MatchingContorller {
                     match.setStatus(); //수락 상태 변경
                     matchingRepository.save(match);
                 }
+                post.complete();
+                postRepository.save(post);
             }
             return ResponseEntity.status(HttpStatus.CREATED).body(matching);
         }
 
     }
 
-
     //매칭 신청자 리스트 확인
     @GetMapping("/{post_idx}/list")
     @Operation(summary = "/matching/1/list", description = "매칭 신청자 리스트 확인")
-    public ResponseEntity<List<Matching>> getMatchRequestsByPost(@PathVariable int post_idx) {
+    public ResponseEntity<List<String>> getMatchRequestsByPost(@PathVariable int post_idx) {
         List<Matching> matchRequests = matchingService.getMatchRequestsByPost(post_idx);
-        return ResponseEntity.ok(matchRequests);
+        List<String> userIds = matchRequests.stream()
+                .map(matching -> matching.getUser().getId())
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(userIds);
     }
 }
