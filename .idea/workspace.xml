@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbca8de8-fe34-47a8-b685-ddc4921397a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_mariadb_jdbc_mariadb_java_client_3_0_10.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/groom.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/groom.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/groom.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/groom.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,6 +73,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
     "spring.configuration.checksum": "2e4ac5b1b22ebfd73ab979e07efe1b19",
     "vue.rearranger.settings.migration": "true"
