@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -28,5 +29,14 @@ public class MatchingService {
         Matching matching = new Matching(user, post);
 
         return matchingRepository.save(matching);
+    }
+
+
+
+    //매칭 신청자 리스트
+    public List<Matching> getMatchRequestsByPost(int post_idx) {
+        Post post = postRepository.findById(post_idx)
+                .orElseThrow(() -> new RuntimeException("게시글을 찾을 수 없습니다."));
+        return matchingRepository.findByPost(post);
     }
 }

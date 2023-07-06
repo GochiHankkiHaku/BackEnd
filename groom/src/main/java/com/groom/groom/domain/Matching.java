@@ -39,9 +39,9 @@ public class Matching extends BaseTimeEntity {
         this.status = MatchingStatus.HOLDING;
     }
 
-
     public void setUser(Users user) {this.user = user;}
     public void setPost(Post post) {this.post = post;}
+    public void setStatus() {this.status= MatchingStatus.OK;}
 
 
 }
