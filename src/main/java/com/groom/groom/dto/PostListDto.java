@@ -34,6 +34,8 @@ public class PostListDto {
     private double lng;
     @Schema(description = "비용", example = "20000")
     private int money;
+    @Schema(description = "이미지", example = "https://")
+    private String img;
     public PostListDto(@NotNull Post entity){
         this.post_idx=entity.getIdx();
         this.menuname = entity.getMenu().getName();
@@ -46,6 +48,7 @@ public class PostListDto {
         this.lat=entity.getLat();
         this.lng=entity.getLng();
         this.money=entity.getMoney();
+        this.img=entity.getImg();
     }
 
 }

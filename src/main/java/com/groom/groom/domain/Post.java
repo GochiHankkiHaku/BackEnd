@@ -69,10 +69,15 @@ public class Post extends BaseTimeEntity {
     @Column(nullable = false)
     @Schema(description = "글 상태", example = "N")
     private char status;
+
+    @Column(nullable = false)
+    @Schema(description = "글 이미지", example = "https://~~~")
+    private String img;
+
     @Builder
     public Post(Users user, Menu menu, String date, String time, int number, int application,
                 double lat, double lng, String address,
-                int money, char status){
+                int money, char status, String img){
         this.menu=menu;
         this.user=user;
         this.date=date;
@@ -84,6 +89,7 @@ public class Post extends BaseTimeEntity {
         this.address=address;
         this.money=money;
         this.status=status;
+        this.img=img;
     }
 
     public void update(Menu menu, String date, String time, int number){
