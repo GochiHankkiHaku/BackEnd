@@ -43,7 +43,7 @@ public class MatchingContorller {
             if (post.getApplication() == post.getNumber()){
                 List<Matching> matchingList = matchingRepository.findByPost(post);
                 for (Matching match : matchingList) {
-                    match.setStatus();
+                    match.setStatus(); //수락 상태 변경
                     matchingRepository.save(match);
                 }
             }
