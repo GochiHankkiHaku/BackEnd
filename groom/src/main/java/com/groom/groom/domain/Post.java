@@ -16,6 +16,7 @@ import java.util.List;
 @Setter
 @Entity
 @DynamicInsert
+@Table(name = "post")
 public class Post extends BaseTimeEntity {
 
     @Id
@@ -25,6 +26,10 @@ public class Post extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_idx")
     private Users user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "menu_idx")
+    private Menu menu;
 
     @Column(length = 200)
     @Schema(description = "본문", example = "본문내용")
@@ -37,6 +42,10 @@ public class Post extends BaseTimeEntity {
     @Column(nullable = false)
     @Schema(description = "안원", example = "1")
     private int number;
+
+    @Column(nullable = false, columnDefinition = "integer default 0")
+    @Schema(description = "신청인원", example = "1")
+    private int application;
 
     @Column(nullable = false)
     @ElementCollection
@@ -51,22 +60,36 @@ public class Post extends BaseTimeEntity {
 
     //위치정보 추가하기
 
+
+    @Column(nullable = false)
+    @Schema(description = "글 상태", example = "N")
+    private char status;
     @Builder
-    public Post(Users user, String content, String time, int number, List<String> item, String category){
+    public Post(Users user, Menu menu, String content, String time, int number, List<String> item, String category, char status){
+        this.menu=menu;
         this.user=user;
         this.content=content;
         this.time=time;
         this.number=number;
         this.item=item;
         this.category=category;
+        this.status=status;
     }
 
-    public void update(String content, String time, int number, List<String> item, String category){
+    public void update(Menu menu, String content, String time, int number, List<String> item, String category){
+        this.menu=menu;
         this.content=content;
         this.time=time;
         this.number=number;
         this.item=item;
         this.category=category;
+    }
+    public void delete(){
+        this.status = 'D';
+    }
+
+    public void complete(){
+        this.status = 'C';
     }
 
     //public void setCategory() {} -> 카테고리 설정

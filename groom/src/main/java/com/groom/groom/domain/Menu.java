@@ -14,6 +14,8 @@ import javax.persistence.*;
 @Setter
 @Entity
 @DynamicInsert
+@Table(name = "menu")
+
 public class Menu {
 
     @Id
