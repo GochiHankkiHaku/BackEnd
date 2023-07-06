@@ -13,7 +13,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Tag(name = "post", description = "매칭 게시글 작성")
 @RestController
@@ -37,6 +39,19 @@ public class PostContorller {
         List<PostListDto> list = postService.findByPost_notstatus(flag);
         return ResponseEntity.status(HttpStatus.CREATED).body(list);
     }
+
+    @GetMapping("/nearby")
+    @Operation(summary = "post/nearby", description = "사용자 주변 1km 게시글")
+    public ResponseEntity<List<PostListDto>> getNearbyPosts(@RequestParam("lat") float userLat, @RequestParam("lng") float userLng) {
+        List<Post> nearbyPosts = postService.findPostsNearby(userLat, userLng);
+        List<PostListDto> nearbyPostsDto = nearbyPosts.stream()
+                .map(PostListDto::new)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(nearbyPostsDto);
+    }
+
+
 
     @GetMapping("/{post_idx}")
     @Operation(summary = "post/{idx}", description = "매칭 글 상세")

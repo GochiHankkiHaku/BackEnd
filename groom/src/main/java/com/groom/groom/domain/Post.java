@@ -31,6 +31,7 @@ public class Post extends BaseTimeEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "menu_idx")
+    @JsonIgnore
     private Menu menu;
 
     @Column(length = 200)
