@@ -36,6 +36,8 @@ public class PostSaveDto {
     private char status;
     @Schema(description = "비용", example = "20000")
     private int money;
+    @Schema(description = "사진", example = "https://~~")
+    private String img;
     public Post toEntity(){
         return Post.builder()
                 .user(user)
@@ -47,9 +49,11 @@ public class PostSaveDto {
                 .status(status)
                 .status('N')
                 .money(money)
+                .img(img)
                 .build();
     }
     public void setUser(Users user) {this.user = user;}
+    public void setImg(String url) {this.img = url;}
 
 
 }

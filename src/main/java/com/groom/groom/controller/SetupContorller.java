@@ -74,92 +74,108 @@ public class SetupContorller {
                 .user(user1)
                 .menu(menu1)
                 .date("오늘")
-                .time("아침")
+                .time("아침 (8:00 ~ 10:00)")
                 .number(1)
                 .application(0)
                 .lat(33.449967)
                 .lng(126.918558)
                 .address("제주특별자치도 서귀포시 성산읍 동류암로 20")
                 .status('N')
+                .money(20000)
+                .img("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png")
                 .build();
 
 
 
-        Post post2 = new Post();
-        post2.setUser(user1);
-        post2.setMenu(menu2);
-        post2.setDate("오늘");
-        post2.setTime("점심");
-        post2.setNumber(2);
-        post2.setApplication(1);
-        post2.setLat(33.449701);
-        post2.setLng(126.917109);
-        post2.setAddress("제주특별자치도 서귀포시 성산읍 동류암로 26");
-        post2.setStatus('N');
+        Post post2 = Post.builder()
+                .user(user1)
+                .menu(menu2)
+                .date("오늘")
+                .time("점심 (10:00 ~ 12:00)")
+                .number(2)
+                .application(1)
+                .lat(33.449701)
+                .lng(126.917109)
+                .address("제주특별자치도 서귀포시 성산읍 동류암로 26")
+                .status('N')
+                .money(20000) // 추가: money 필드 초기화
+                .img("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%8C%E1%85%A1%E1%84%85%E1%85%B5%E1%84%83%E1%85%A9%E1%86%B7%E1%84%8C%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7.png")
+                .build();
 
+        Post post3 = Post.builder()
+                .user(user1)
+                .menu(menu3)
+                .date("오늘")
+                .time("저녁 (16:00 ~ 18:00)")
+                .number(3)
+                .application(1)
+                .lat(33.449967)
+                .lng(126.918558)
+                .address("제주특별자치도 서귀포시 성산읍 동류암로 20")
+                .status('N')
+                .money(20000) // 추가: money 필드 초기화
+                .img("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/%EB%8C%80%EC%A7%80%201%20%EC%82%AC%EB%B3%B8%209.png")
+                .build();
 
-        Post post3 = new Post();
-        post3.setUser(user1);
-        post3.setMenu(menu3);
-        post3.setDate("오늘");
-        post3.setTime("저녁");
-        post3.setNumber(3);
-        post3.setApplication(1);
-        post3.setLat(33.449967);
-        post3.setLng(126.918558);
-        post3.setAddress("제주특별자치도 서귀포시 성산읍 동류암로 20");
-        post3.setStatus('N');
+        Post post4 = Post.builder()
+                .user(user1)
+                .menu(menu3)
+                .date("내일")
+                .time("아침 (8:00 ~ 10:00)")
+                .number(4)
+                .application(2)
+                .lat(33.450285)
+                .lng(126.91751)
+                .address("제주특별자치도 제주시 고마로13길 32")
+                .status('N')
+                .money(20000) // 추가: money 필드 초기화
+                .img("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/%EB%8C%80%EC%A7%80%201%20%EC%82%AC%EB%B3%B8%209.png")
+                .build();
 
+        Post post5 = Post.builder()
+                .user(user1)
+                .menu(menu2)
+                .date("내일")
+                .time("점심 (12:00 ~ 14:00)")
+                .number(2)
+                .application(1)
+                .lat(33.449148)
+                .lng(126.913911)
+                .address("제주특별자치도 서귀포시 성산읍 고성오조로 55")
+                .status('N')
+                .money(20000) // 추가: money 필드 초기화
+                .img("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%8C%E1%85%A1%E1%84%85%E1%85%B5%E1%84%83%E1%85%A9%E1%86%B7%E1%84%8C%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7.png")
+                .build();
 
-        Post post4 = new Post();
-        post4.setUser(user1);
-        post4.setMenu(menu3);
-        post4.setDate("내일");
-        post4.setTime("아침");
-        post4.setNumber(4);
-        post4.setApplication(2);
-        post4.setLat(33.450285);
-        post4.setLng(126.91751);
-        post4.setAddress("제주특별자치도 제주시 고마로13길 32");
-        post4.setStatus('N');
+        Post post6 = Post.builder()
+                .user(user1)
+                .menu(menu1)
+                .date("내일")
+                .time("저녁 (16:00 ~ 18:00)")
+                .number(3)
+                .application(0)
+                .lat(33.445487)
+                .lng(126.900651)
+                .address("제주특별자치도 서귀포시 성산읍 서성일로 1139")
+                .status('N')
+                .money(20000) // 추가: money 필드 초기화
+                .img("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png")
+                .build();
 
-
-        Post post5 = new Post();
-        post5.setUser(user1);
-        post5.setMenu(menu2);
-        post5.setDate("내일");
-        post5.setTime("점심");
-        post5.setNumber(2);
-        post5.setApplication(1);
-        post5.setLat(33.449148);
-        post5.setLng(126.913911);
-        post5.setAddress("제주특별자치도 서귀포시 성산읍 고성오조로 55");
-        post5.setStatus('N');
-
-
-        Post post6 = new Post();
-        post6.setUser(user1);
-        post6.setMenu(menu1);
-        post6.setDate("내일");
-        post6.setTime("저녁");
-        post6.setNumber(3);
-        post6.setApplication(0);
-        post6.setLat(33.445487);
-        post6.setLng(126.900651);
-        post6.setAddress("제주특별자치도 서귀포시 성산읍 서성일로 1139");
-        post6.setStatus('N');
-
-        Post post7 = new Post();
-        post7.setUser(user1);
-        post7.setMenu(menu2);
-        post7.setDate("오늘");
-        post7.setTime("저녁");
-        post7.setNumber(1);
-        post7.setApplication(0);
-        post7.setLat(33.450701);
-        post7.setLng(126.570667);
-        post7.setAddress("제주특별자치도 제주시 첨단로 242");
-        post7.setStatus('N');
+        Post post7 = Post.builder()
+                .user(user1)
+                .menu(menu2)
+                .date("오늘")
+                .time("저녁 (16:00 ~ 18:00)")
+                .number(1)
+                .application(0)
+                .lat(33.450701)
+                .lng(126.570667)
+                .address("제주특별자치도제주시 첨단로 242")
+                .status('N')
+                .money(20000) // 추가: money 필드 초기화
+                .img("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%8C%E1%85%A1%E1%84%85%E1%85%B5%E1%84%83%E1%85%A9%E1%86%B7%E1%84%8C%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7.png")
+                .build();
 
         postRepository.save(post1);
         postRepository.save(post2);

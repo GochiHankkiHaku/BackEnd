@@ -34,6 +34,8 @@ public class PostResponseDto {
     private int money;
     @Schema(description = "상태", example = "C")
     private char status;
+    @Schema(description = "이미지", example = "https:///~~~")
+    private String img;
     public PostResponseDto(@NotNull Post entity){
         this.menuname = entity.getMenu().getName();
         this.menucontent=entity.getMenu().getContent();
@@ -45,6 +47,7 @@ public class PostResponseDto {
         this.address=entity.getAddress();
         this.status = entity.getStatus();
         this.money=entity.getMoney();
+        this.img=entity.getImg();
     }
 
 
