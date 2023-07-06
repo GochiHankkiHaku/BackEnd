@@ -1,12 +1,10 @@
 package com.groom.groom.controller;
 
-import com.groom.groom.domain.Market;
 import com.groom.groom.domain.Post;
 import com.groom.groom.dto.PostListDto;
 import com.groom.groom.dto.PostResponseDto;
 import com.groom.groom.dto.PostSaveDto;
 import com.groom.groom.dto.PostUpdateDto;
-import com.groom.groom.service.MarketService;
 import com.groom.groom.service.PostService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -15,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
