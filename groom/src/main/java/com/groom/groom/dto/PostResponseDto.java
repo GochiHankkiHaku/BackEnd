@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -25,6 +26,9 @@ public class PostResponseDto {
     private int number;
     @Schema(description = "신청인원", example = "1")
     private int application;
+    @Schema(description = "주 재료", example = "갈치")
+    private List<String> item;
+
     public PostResponseDto(@NotNull Post entity){
         this.menuname = entity.getMenu().getName();
         this.menucontent=entity.getMenu().getContent();
@@ -32,5 +36,6 @@ public class PostResponseDto {
         this.time= entity.getTime();
         this.number=entity.getNumber();
         this.application=entity.getApplication();
+        this.item=entity.getItem();
     }
 }

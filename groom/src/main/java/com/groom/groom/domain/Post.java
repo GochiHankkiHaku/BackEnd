@@ -49,7 +49,7 @@ public class Post extends BaseTimeEntity {
     @Schema(description = "신청인원", example = "1")
     private int application;
 
-    @Column(nullable = false)
+    @Column(name = "item")
     @ElementCollection
     @CollectionTable(name = "post_item", joinColumns = @JoinColumn(name = "post_idx"))
     @Schema(description = "아이템 리스트", example = "[\"고기\", \"생선\"]")

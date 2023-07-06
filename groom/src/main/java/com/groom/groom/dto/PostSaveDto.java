@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -25,6 +26,12 @@ public class PostSaveDto {
     private String time;
     @Schema(description = "인원", example = "1")
     private int number;
+    @Schema(description = "주 재료", example = "갈치")
+    private List<String> item;
+    @Schema(description = "분류", example = "어패류")
+    private String category;
+
+
     @Schema(description = "상태", example = "N")
     private char status;
 
@@ -34,6 +41,8 @@ public class PostSaveDto {
                 .content(content)
                 .time(time)
                 .number(number)
+                .item(item)
+                .category(category)
                 .status(status)
                 .status('N')
                 .build();
