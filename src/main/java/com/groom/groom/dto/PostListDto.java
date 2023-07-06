@@ -11,6 +11,8 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 public class PostListDto {
+    @Schema(description = "idx", example = "1")
+    private int post_idx;
     @Schema(description = "메뉴", example = "갈치조림")
     private String menuname;
     @Schema(description = "날짜", example = "내일")
@@ -32,6 +34,7 @@ public class PostListDto {
     @Schema(description = "경도", example = "126.918558")
     private double lng;
     public PostListDto(@NotNull Post entity){
+        this.post_idx=entity.getIdx();
         this.menuname = entity.getMenu().getName();
         this.date=entity.getDate();
         this.time = entity.getTime();

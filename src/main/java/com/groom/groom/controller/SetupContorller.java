@@ -1,8 +1,10 @@
 package com.groom.groom.controller;
 
+import com.groom.groom.domain.Market;
 import com.groom.groom.domain.Menu;
 import com.groom.groom.domain.Post;
 import com.groom.groom.domain.Users;
+import com.groom.groom.repository.MarketRepository;
 import com.groom.groom.repository.MenuRepository;
 import com.groom.groom.repository.PostRepository;
 import com.groom.groom.repository.UsersRepository;
@@ -13,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.yaml.snakeyaml.error.Mark;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +29,7 @@ public class SetupContorller {
     private final UsersRepository usersRepository;
     private final MenuRepository menuRepository;
     private final PostRepository postRepository;
+    private final MarketRepository marketRepository;
 
     @GetMapping("/")
     public String setup() {
@@ -166,6 +170,11 @@ public class SetupContorller {
         postRepository.save(post6);
         postRepository.save(post7);
 
+        Market market1 = new Market("고성오일시장", 33.452158, 126.913904);
+        Market market2 = new Market("진농수상", 33.461779, 126.933444);
+
+        marketRepository.save(market1);
+        marketRepository.save(market2);
 
         return "Initial setup completed";
 
