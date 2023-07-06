@@ -40,39 +40,11 @@ public class PostService {
         }
 
         List<String> items = postSaveDto.getItem();
-        String category = determineCategory(items);
-
         Post post = postSaveDto.toEntity();
         post.setMenu(menu);
-        post.setCategory(category);
+
         postRepository.save(post);
         return post;
-    }
-    //카테고리 분류 함수
-    private String determineCategory(List<String> items) {
-        boolean hasMeat = false;
-        boolean hasFish = false;
-        boolean hasVegetable = false;
-
-        for (String item : items) {
-            if (item.equals("돼지고기") || item.equals("소고기") || item.equals("말고기")) {
-                hasMeat = true;
-            } else if (item.equals("갈치") || item.equals("고등어")) {
-                hasFish = true;
-            } else if (item.equals("배추") || item.equals("양파")) {
-                hasVegetable = true;
-            }
-        }
-
-        if (hasMeat && !hasFish && !hasVegetable) {
-            return "육류";
-        } else if (!hasMeat && hasFish && !hasVegetable) {
-            return "어패류";
-        } else if (!hasMeat && !hasFish && hasVegetable) {
-            return "채소";
-        } else {
-            return "기타";
-        }
     }
 
     //맵 상세정보 리스트
@@ -82,13 +54,13 @@ public class PostService {
         return list.stream().map(PostListDto::new).collect(Collectors.toList());
     }
 
-    public List<Post> findPostsNearby(float userLat, float userLng) {
+    public List<Post> findPostsNearby(double userLat, double userLng) {
         List<Post> allPosts = postRepository.findAll();  // 모든 게시글 조회
 
         List<Post> nearbyPosts = new ArrayList<>();
         for (Post post : allPosts) {
-            float postLat = post.getLat();  // 게시글의 위도
-            float postLng = post.getLng();  // 게시글의 경도
+            double postLat = post.getLat();  // 게시글의 위도
+            double postLng = post.getLng();  // 게시글의 경도
 
             double distance = calculateDistance(userLat, userLng, postLat, postLng);
             if (distance <= 1.0) {  // 1km 반경 내에 있는 게시글인 경우
@@ -100,7 +72,7 @@ public class PostService {
     }
     public static final double EARTH_RADIUS = 6371.0;
 
-    public double calculateDistance(float lat1, float lng1, float lat2, float lng2) {
+    public double calculateDistance(double lat1, double lng1, double lat2, double lng2) {
         double lat1Rad = Math.toRadians(lat1);
         double lng1Rad = Math.toRadians(lng1);
         double lat2Rad = Math.toRadians(lat2);
@@ -131,7 +103,7 @@ public class PostService {
     public Post update(int idx, PostUpdateDto requestDto){
         Post post = postRepository.findById(idx).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id="+idx));
         Menu menu = menuRepository.findByName(requestDto.getMenuname()); // 메뉴 이름으로 메뉴 조회
-        post.update(menu,requestDto.getContent(),  requestDto.getTime(),requestDto.getNumber(), requestDto.getItem(), requestDto.getCategory());
+        post.update(menu,requestDto.getDate(), requestDto.getTime(),requestDto.getNumber(), requestDto.getItem());
         return post;
     }
     //삭제

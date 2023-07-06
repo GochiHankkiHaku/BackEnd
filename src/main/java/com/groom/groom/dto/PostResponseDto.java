@@ -18,9 +18,9 @@ public class PostResponseDto {
     private String menuname;
     @Schema(description = "메뉴설명", example = "갈치조림은 고추장에~~")
     private String menucontent;
-    @Schema(description = "본문", example = "본문내용")
-    private String content;
-    @Schema(description = "시간", example = "내일 오전")
+    @Schema(description = "날짜", example = "아침")
+    private String date;
+    @Schema(description = "시간", example = "아침")
     private String time;
     @Schema(description = "인원", example = "2")
     private int number;
@@ -36,7 +36,7 @@ public class PostResponseDto {
     public PostResponseDto(@NotNull Post entity){
         this.menuname = entity.getMenu().getName();
         this.menucontent=entity.getMenu().getContent();
-        this.content = entity.getContent();
+        this.date=entity.getDate();
         this.time= entity.getTime();
         this.number=entity.getNumber();
         this.application=entity.getApplication();
