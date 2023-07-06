@@ -30,8 +30,6 @@ public class PostSaveDto {
     private List<String> item;
     @Schema(description = "분류", example = "어패류")
     private String category;
-
-
     @Schema(description = "상태", example = "N")
     private char status;
 
@@ -42,7 +40,6 @@ public class PostSaveDto {
                 .time(time)
                 .number(number)
                 .item(item)
-                .category(category)
                 .status(status)
                 .status('N')
                 .build();
