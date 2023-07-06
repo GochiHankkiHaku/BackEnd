@@ -14,25 +14,23 @@ import java.util.List;
 @NoArgsConstructor
 public class PostUpdateDto {
     private String menuname;
-    private String content;
+    private String date;
     private String time;
     private int number;
     private List<String> item;
-    private String category;
-    private float lat;
-    private float lng;
+    private double lat;
+    private double lng;
     private String address;
 
     @Builder
-    public PostUpdateDto(String menuname, String content, String time, int number,
-                         List<String> item, String category, float lat, float lng,
+    public PostUpdateDto(String menuname, String date, String time, int number,
+                         List<String> item, double lat, double lng,
                          String address){
         this.menuname = menuname;
-        this. content=content;
+        this.date=date;
         this.time=time;
         this.number=number;
         this.item=item;
-        this.category=category;
         this.lat=lat;
         this.lng=lng;
         this.address=address;

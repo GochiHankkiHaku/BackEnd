@@ -54,13 +54,13 @@ public class PostService {
         return list.stream().map(PostListDto::new).collect(Collectors.toList());
     }
 
-    public List<Post> findPostsNearby(float userLat, float userLng) {
+    public List<Post> findPostsNearby(double userLat, double userLng) {
         List<Post> allPosts = postRepository.findAll();  // 모든 게시글 조회
 
         List<Post> nearbyPosts = new ArrayList<>();
         for (Post post : allPosts) {
-            float postLat = post.getLat();  // 게시글의 위도
-            float postLng = post.getLng();  // 게시글의 경도
+            double postLat = post.getLat();  // 게시글의 위도
+            double postLng = post.getLng();  // 게시글의 경도
 
             double distance = calculateDistance(userLat, userLng, postLat, postLng);
             if (distance <= 1.0) {  // 1km 반경 내에 있는 게시글인 경우
@@ -72,7 +72,7 @@ public class PostService {
     }
     public static final double EARTH_RADIUS = 6371.0;
 
-    public double calculateDistance(float lat1, float lng1, float lat2, float lng2) {
+    public double calculateDistance(double lat1, double lng1, double lat2, double lng2) {
         double lat1Rad = Math.toRadians(lat1);
         double lng1Rad = Math.toRadians(lng1);
         double lat2Rad = Math.toRadians(lat2);
@@ -103,7 +103,7 @@ public class PostService {
     public Post update(int idx, PostUpdateDto requestDto){
         Post post = postRepository.findById(idx).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id="+idx));
         Menu menu = menuRepository.findByName(requestDto.getMenuname()); // 메뉴 이름으로 메뉴 조회
-        post.update(menu,requestDto.getContent(),  requestDto.getTime(),requestDto.getNumber(), requestDto.getItem(), requestDto.getCategory());
+        post.update(menu,requestDto.getDate(), requestDto.getTime(),requestDto.getNumber(), requestDto.getItem());
         return post;
     }
     //삭제

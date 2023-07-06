@@ -20,30 +20,27 @@ public class PostSaveDto {
     private Users user;
     @Schema(description = "메뉴 이름", example = "갈치조림")
     private String menuname;
-    @Schema(description = "본문", example = "본문내용")
-    private String content;
-    @Schema(description = "시간", example = "내일 오전")
+    @Schema(description = "날짜", example = "오늘")
+    private String date;
+    @Schema(description = "시간", example = "아침")
     private String time;
     @Schema(description = "인원", example = "1")
     private int number;
     @Schema(description = "주 재료", example = "갈치")
     private List<String> item;
-    @Schema(description = "분류", example = "어패류")
-    private String category;
     @Schema(description = "위도", example = "33.449701")
-    private float lat;
+    private double lat;
     @Schema(description = "경도", example = "126.917109")
-    private float lng;
+    private double lng;
     @Schema(description = "도로명주소", example = "제주도 제주시~~~")
     private String address;
-
     @Schema(description = "상태", example = "N")
     private char status;
 
     public Post toEntity(){
         return Post.builder()
                 .user(user)
-                .content(content)
+                .date(date)
                 .time(time)
                 .number(number)
                 .item(item)
