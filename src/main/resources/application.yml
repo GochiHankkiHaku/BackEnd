@@ -3,7 +3,8 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DATABASE_URL}
+    driver-class-name: org.mariadb.jdbc.Driver
 
   jpa:
     hibernate:
