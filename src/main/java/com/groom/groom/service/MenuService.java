@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -23,5 +24,9 @@ public class MenuService {
         Menu menu = menuSaveDto.toEntity();
         menuRepository.save(menu);
         return menu;
+    }
+    @Transactional
+    public List<Menu> findAll() {
+        return menuRepository.findAll();
     }
 }
