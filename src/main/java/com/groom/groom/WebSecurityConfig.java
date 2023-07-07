@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         CorsConfiguration config = new CorsConfiguration();
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
-        config.setAllowedOrigins(Arrays.asList("http://127.0.0.1:3000", "http://localhost:3000"));
+        config.setAllowedOrigins(Arrays.asList("https://user-app.krampoline.com", "http://localhost:3000"));
         config.setAllowCredentials(true);
         source.registerCorsConfiguration("/**", config);
         return source;

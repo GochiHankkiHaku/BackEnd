@@ -14,6 +14,9 @@
       <module name="groom" target="11" />
       <module name="groom.main" target="11" />
       <module name="groom.test" target="11" />
+      <module name="kakao" target="11" />
+      <module name="kakao.main" target="11" />
+      <module name="kakao.test" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

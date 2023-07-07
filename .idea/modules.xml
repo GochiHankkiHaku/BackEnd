@@ -5,6 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/groom.iml" filepath="$PROJECT_DIR$/.idea/modules/groom.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/groom.main.iml" filepath="$PROJECT_DIR$/.idea/modules/groom.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/groom.test.iml" filepath="$PROJECT_DIR$/.idea/modules/groom.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kakao.iml" filepath="$PROJECT_DIR$/.idea/modules/kakao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kakao.main.iml" filepath="$PROJECT_DIR$/.idea/modules/kakao.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kakao.test.iml" filepath="$PROJECT_DIR$/.idea/modules/kakao.test.iml" />
     </modules>
   </component>
 </project>
