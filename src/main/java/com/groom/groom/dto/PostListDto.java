@@ -20,12 +20,14 @@ public class PostListDto {
     private String date;
     @Schema(description = "시간", example = "아침")
     private String time;
-    @Schema(description = "인원", example = "3")
-    private int number;
-    @Schema(description = "신청인원", example = "2")
-    private int application;
+    @Schema(description = "인원", example = "1")
+    private int min;
+    @Schema(description = "인원", example = "1")
+    private int max;
     @Schema(description = "도로명주소", example = "제주도 제주시~~~")
     private String address;
+    @Schema(description = "상세주소", example = "900동 000호")
+    private String detailAdd;
     @Schema(description = "상태", example = "C")
     private char status;
     @Schema(description = "위도", example = "33.449967")
@@ -41,9 +43,10 @@ public class PostListDto {
         this.menuname = entity.getMenu().getName();
         this.date=entity.getDate();
         this.time = entity.getTime();
-        this.number= entity.getNumber();
-        this.application=entity.getApplication();
+        this.min =entity.getMin();
+        this.max=entity.getMax();
         this.address=entity.getAddress();
+        this.detailAdd=entity.getDetailAdd();
         this.status=entity.getStatus();
         this.lat=entity.getLat();
         this.lng=entity.getLng();

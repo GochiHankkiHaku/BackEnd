@@ -29,27 +29,8 @@ public class MatchingContorller {
     @Operation(summary = "matching/save/1/1", description = "매칭 신청")
     public ResponseEntity<Matching> save(@PathVariable int post_idx, @PathVariable int user_idx){
         Post post= postRepository.findById(post_idx).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id="+post_idx));
-
-        if (post.getApplication() == post.getNumber()){
-            throw new IllegalStateException("모집 마감된 게시글입니다.");
-        }
-
-        else
-        {
-            post.increaseApplication();
-            Matching matching = matchingService.saveMatching(post_idx, user_idx);
-
-            if (post.getApplication() == post.getNumber()){
-                List<Matching> matchingList = matchingRepository.findByPost(post);
-                for (Matching match : matchingList) {
-                    match.setStatus(); //수락 상태 변경
-                    matchingRepository.save(match);
-                }
-                post.complete();
-                postRepository.save(post);
-            }
-            return ResponseEntity.status(HttpStatus.CREATED).body(matching);
-        }
+        Matching matching = matchingService.saveMatching(post_idx, user_idx);
+        return ResponseEntity.status(HttpStatus.CREATED).body(matching);
 
     }
 

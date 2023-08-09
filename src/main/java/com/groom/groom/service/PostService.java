@@ -109,7 +109,9 @@ public class PostService {
     public Post update(int idx, PostUpdateDto requestDto){
         Post post = postRepository.findById(idx).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id="+idx));
         Menu menu = menuRepository.findByName(requestDto.getMenuname()); // 메뉴 이름으로 메뉴 조회
-        post.update(menu,requestDto.getDate(), requestDto.getTime(),requestDto.getNumber());
+        post.update(menu,requestDto.getDate(), requestDto.getTime(),requestDto.getMin(),requestDto.getMax(), requestDto.getLat(),
+                requestDto.getLng(), requestDto.getMoney(), requestDto.getImg(), requestDto.getContact(),
+                requestDto.getAddress(), requestDto.getDetailAdd());
         return post;
     }
     //삭제

@@ -25,27 +25,35 @@ public class PostSaveDto {
     @Schema(description = "시간", example = "아침")
     private String time;
     @Schema(description = "인원", example = "1")
-    private int number;
+    private int min;
+    @Schema(description = "인원", example = "1")
+    private int max;
     @Schema(description = "위도", example = "33.449701")
     private double lat;
     @Schema(description = "경도", example = "126.917109")
     private double lng;
-    @Schema(description = "도로명주소", example = "제주도 제주시~~~")
+    @Schema(description = "주소", example = "제주도 서귀포시 ~~")
     private String address;
+    @Schema(description = "상세주소", example = "900동 000호")
+    private String detailAdd;
     @Schema(description = "상태", example = "N")
     private char status;
     @Schema(description = "비용", example = "20000")
     private int money;
-    @Schema(description = "사진", example = "https://~~")
+    @Schema(description = "글 이미지", example = "https://~~~")
     private String img;
+
     public Post toEntity(){
         return Post.builder()
                 .user(user)
                 .date(date)
                 .time(time)
-                .number(number)
+                .min(min)
+                .max(max)
                 .lat(lat)
                 .lng(lng)
+                .address(address)
+                .detailAdd(detailAdd)
                 .status(status)
                 .status('N')
                 .money(money)

@@ -44,11 +44,11 @@ public class Post extends BaseTimeEntity {
 
     @Column(nullable = false)
     @Schema(description = "인원", example = "1")
-    private int number;
+    private int min;
 
-    @Column(nullable = false, columnDefinition = "integer default 0")
-    @Schema(description = "신청인원", example = "1")
-    private int application;
+    @Column(nullable = false)
+    @Schema(description = "인원", example = "1")
+    private int max;
 
     @Column(nullable = false)
     @Schema(description = "위도", example = "33.449701")
@@ -57,10 +57,6 @@ public class Post extends BaseTimeEntity {
     @Column(nullable = false)
     @Schema(description = "경도", example = "126.917109")
     private double lng;
-
-    @Column(length = 50, nullable = true)
-    @Schema(description = "도로명주소", example = "제주도 제주시~~~")
-    private String address;
 
     @Column(nullable = false)
     @Schema(description = "비용", example = "20000")
@@ -74,29 +70,56 @@ public class Post extends BaseTimeEntity {
     @Schema(description = "글 이미지", example = "https://~~~")
     private String img;
 
+
+    @Column(nullable = false)
+    @Schema(description = "연락수단", example = "전화번호/카카오톡id/옾챗")
+    private String contact;
+
+    @Column(nullable = false)
+    @Schema(description = "주소", example = "제주도 서귀포시 ~~")
+    private String address;
+
+    @Column(nullable = false)
+    @Schema(description = "상세주소", example = "900동 000호")
+    private String detailAdd;
+
+
     @Builder
-    public Post(Users user, Menu menu, String date, String time, int number, int application,
-                double lat, double lng, String address,
-                int money, char status, String img){
+    public Post(Users user, Menu menu, String date, String time, int min, int max,
+                double lat, double lng, int money, char status, String img, String contact,
+                String address, String detailAdd){
         this.menu=menu;
         this.user=user;
         this.date=date;
         this.time=time;
-        this.number=number;
-        this.application =application;
+        this.min=min;
+        this.max=max;
         this.lat=lat;
         this.lng=lng;
-        this.address=address;
         this.money=money;
         this.status=status;
         this.img=img;
+        this.contact=contact;
+        this.address=address;
+        this.detailAdd=detailAdd;
     }
 
-    public void update(Menu menu, String date, String time, int number){
+    public void update(Menu menu, String date, String time, int min, int max,
+                       double lat, double lng, int money, String img, String contact,
+                       String address, String detailAdd
+    ){
         this.menu=menu;
         this.date = date;
         this.time=time;
-        this.number=number;
+        this.min=min;
+        this.max=max;
+        this.lat=lat;
+        this.lng=lng;
+        this.money=money;
+        this.img=img;
+        this.contact=contact;
+        this.address=address;
+        this.detailAdd=detailAdd;
     }
     public void delete(){
         this.status = 'D';
@@ -104,9 +127,6 @@ public class Post extends BaseTimeEntity {
 
     public void complete(){
         this.status = 'C';
-    }
-    public void increaseApplication(){
-        this.application++;
     }
 
 }

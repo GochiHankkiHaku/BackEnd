@@ -16,23 +16,31 @@ public class PostUpdateDto {
     private String menuname;
     private String date;
     private String time;
-    private int number;
-    private List<String> item;
+    private int min;
+    private int max;
     private double lat;
     private double lng;
+    private int money;
+    private String img;
+    private String contact;
     private String address;
+    private String detailAdd;
 
     @Builder
-    public PostUpdateDto(String menuname, String date, String time, int number,
-                         List<String> item, double lat, double lng,
-                         String address){
+    public PostUpdateDto(String menuname, String date, String time, int min, int max,
+                         double lat, double lng, int money, String img, String contact,
+                         String address, String detailAdd){
         this.menuname = menuname;
         this.date=date;
         this.time=time;
-        this.number=number;
-        this.item=item;
+        this.min=min;
+        this.max=max;
         this.lat=lat;
         this.lng=lng;
+        this.money=money;
+        this.img=img;
+        this.contact=contact;
         this.address=address;
+        this.detailAdd=detailAdd;
     }
 }
