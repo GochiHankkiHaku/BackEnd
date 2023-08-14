@@ -1,9 +1,6 @@
 package com.groom.groom.service;
 
-import com.groom.groom.domain.Matching;
-import com.groom.groom.domain.Menu;
-import com.groom.groom.domain.Post;
-import com.groom.groom.domain.Users;
+import com.groom.groom.domain.*;
 import com.groom.groom.dto.MenuSaveDto;
 import com.groom.groom.repository.MatchingRepository;
 import com.groom.groom.repository.PostRepository;
@@ -39,4 +36,19 @@ public class MatchingService {
                 .orElseThrow(() -> new RuntimeException("게시글을 찾을 수 없습니다."));
         return matchingRepository.findByPost(post);
     }
+
+    public void okMatch(int matching_idx) {
+        Matching matching = matchingRepository.findById(matching_idx)
+                .orElseThrow(() -> new RuntimeException("매칭 신청을 찾을 수 없습니다."));
+        matching.setStatus(MatchingStatus.OK);
+        matchingRepository.save(matching);
+    }
+
+    public void noMatch(int matching_idx) {
+        Matching matching = matchingRepository.findById(matching_idx)
+                .orElseThrow(() -> new RuntimeException("매칭 신청을 찾을 수 없습니다."));
+        matching.setStatus(MatchingStatus.NO);
+        matchingRepository.save(matching);
+    }
+
 }

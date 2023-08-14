@@ -44,4 +44,19 @@ public class MatchingContorller {
                 .collect(Collectors.toList());
         return ResponseEntity.ok(userIds);
     }
+    //매칭 수락
+    @PutMapping("/ok/{matching_idx}")
+    @Operation(summary = "/matching/ok/1", description = "매칭 수락")
+    public ResponseEntity<Void> okMatching(@PathVariable int matching_idx){
+        matchingService.okMatch(matching_idx);
+        return ResponseEntity.ok().build();
+    }
+
+    //매칭 거절
+    @PutMapping("/no/{matching_idx}")
+    @Operation(summary = "/matching/no/1", description = "매칭 수락")
+    public ResponseEntity<Void> noMatching(@PathVariable int matching_idx){
+        matchingService.noMatch(matching_idx);
+        return ResponseEntity.ok().build();
+    }
 }
