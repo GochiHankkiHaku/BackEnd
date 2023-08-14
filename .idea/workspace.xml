@@ -22,6 +22,8 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+<<<<<<< HEAD
+=======
     <projectState path="$PROJECT_DIR$/groom">
       <ProjectState />
     </projectState>
@@ -37,10 +39,22 @@
         </projects_view>
       </state>
     </system>
+>>>>>>> post_2
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="RunManager">
+=======
   <component name="JpbToolWindowState">
     <option name="isToolWindowVisible" value="false" />
   </component>
@@ -83,6 +97,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+>>>>>>> post_2
     <configuration name="GroomApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="kakao.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.groom.groom.GroomApplication" />
@@ -91,8 +106,11 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+<<<<<<< HEAD
+    <servers />
+  </component>
+=======
     <task active="true" id="Default" summary="Default task">
       <changelist id="fbca8de8-fe34-47a8-b685-ddc4921397a3" name="Changes" comment="" />
       <created>1688702013758</created>
@@ -119,4 +137,5 @@
       </map>
     </option>
   </component>
+>>>>>>> post_2
 </project>
