@@ -75,12 +75,15 @@ public class SetupContorller {
                 .menu(menu1)
                 .date("오늘")
                 .time("아침 (8:00 ~ 10:00)")
-                .number(1)
-                .application(0)
+                .min(1)
+                .max(3)
                 .lat(33.449967)
                 .lng(126.918558)
                 .address("제주특별자치도 서귀포시 성산읍 동류암로 20")
+                .detailAdd("000동 000호")
                 .status('N')
+                .contact("010-")
+
                 .money(20000)
                 .img("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png")
                 .build();
@@ -92,13 +95,15 @@ public class SetupContorller {
                 .menu(menu2)
                 .date("오늘")
                 .time("점심 (10:00 ~ 12:00)")
-                .number(2)
-                .application(1)
+                .min(2)
+                .max(3)
                 .lat(33.449701)
                 .lng(126.917109)
                 .address("제주특별자치도 서귀포시 성산읍 동류암로 26")
                 .status('N')
                 .money(20000) // 추가: money 필드 초기화
+                .detailAdd("000동 000호")
+                .contact("010-")
                 .img("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%8C%E1%85%A1%E1%84%85%E1%85%B5%E1%84%83%E1%85%A9%E1%86%B7%E1%84%8C%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7.png")
                 .build();
 
@@ -107,13 +112,17 @@ public class SetupContorller {
                 .menu(menu3)
                 .date("오늘")
                 .time("저녁 (16:00 ~ 18:00)")
-                .number(3)
-                .application(1)
+                .min(2)
+                .max(3)
+                .contact("010-")
+
                 .lat(33.449967)
                 .lng(126.918558)
                 .address("제주특별자치도 서귀포시 성산읍 동류암로 20")
                 .status('N')
                 .money(20000) // 추가: money 필드 초기화
+                .detailAdd("000동 000호")
+
                 .img("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/%EB%8C%80%EC%A7%80%201%20%EC%82%AC%EB%B3%B8%209.png")
                 .build();
 
@@ -122,8 +131,9 @@ public class SetupContorller {
                 .menu(menu3)
                 .date("내일")
                 .time("아침 (8:00 ~ 10:00)")
-                .number(4)
-                .application(2)
+                .contact("010-")
+
+                .detailAdd("000동 000호")
                 .lat(33.450285)
                 .lng(126.91751)
                 .address("제주특별자치도 제주시 고마로13길 32")
@@ -137,8 +147,11 @@ public class SetupContorller {
                 .menu(menu2)
                 .date("내일")
                 .time("점심 (12:00 ~ 14:00)")
-                .number(2)
-                .application(1)
+                .min(2)
+                .max(3)
+                .detailAdd("000동 000호")
+                .contact("010-")
+
                 .lat(33.449148)
                 .lng(126.913911)
                 .address("제주특별자치도 서귀포시 성산읍 고성오조로 55")
@@ -152,12 +165,15 @@ public class SetupContorller {
                 .menu(menu1)
                 .date("내일")
                 .time("저녁 (16:00 ~ 18:00)")
-                .number(3)
-                .application(0)
+                .min(2)
+                .max(3)
                 .lat(33.445487)
                 .lng(126.900651)
                 .address("제주특별자치도 서귀포시 성산읍 서성일로 1139")
                 .status('N')
+                .detailAdd("000동 000호")
+                .contact("010-")
+
                 .money(20000) // 추가: money 필드 초기화
                 .img("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png")
                 .build();
@@ -167,12 +183,15 @@ public class SetupContorller {
                 .menu(menu2)
                 .date("오늘")
                 .time("저녁 (16:00 ~ 18:00)")
-                .number(1)
-                .application(0)
+                .min(2)
+                .max(3)
                 .lat(33.450701)
                 .lng(126.570667)
                 .address("제주특별자치도제주시 첨단로 242")
                 .status('N')
+                .detailAdd("000동 000호")
+                .contact("010-")
+
                 .money(20000) // 추가: money 필드 초기화
                 .img("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%8C%E1%85%A1%E1%84%85%E1%85%B5%E1%84%83%E1%85%A9%E1%86%B7%E1%84%8C%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7.png")
                 .build();
@@ -191,3 +210,4 @@ public class SetupContorller {
     }
 
 }
+

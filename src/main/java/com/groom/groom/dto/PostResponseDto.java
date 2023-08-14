@@ -41,8 +41,8 @@ public class PostResponseDto {
         this.menucontent=entity.getMenu().getContent();
         this.date=entity.getDate();
         this.time= entity.getTime();
-        this.number=entity.getNumber();
-        this.application=entity.getApplication();
+
+
         this.item=entity.getMenu().getItem();
         this.address=entity.getAddress();
         this.status = entity.getStatus();

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
@@ -12,6 +13,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="groom" target="11" />
+      <module name="groom.groom.main~1" target="11" />
+      <module name="groom.groom.test~1" target="11" />
       <module name="groom.main" target="11" />
       <module name="groom.test" target="11" />
       <module name="kakao" target="11" />

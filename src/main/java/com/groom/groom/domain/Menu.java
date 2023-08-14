@@ -41,8 +41,6 @@ public class Menu {
     @Schema(description = "이미지", example = "https://")
     private String img;
 
-    //이미지도 시간 남으면?
-
     @Builder
     public Menu(String name, String content, List<String> item, String img){
         this.name=name;
