@@ -37,10 +37,11 @@ target/
 
 # Gradle
 gradle/
+
 build/
-
-
-
+build
+.gradle/
+.build/
 # Database
 *.db
 *.sqlite

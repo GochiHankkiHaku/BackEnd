@@ -32,17 +32,17 @@ public class Menu {
     private String content;
 
     @ElementCollection
-    @CollectionTable(name = "post_item", joinColumns = @JoinColumn(name = "post_idx"))
-    @Column(name = "item", length = 50) // 컬럼 길이 설정
-    @Schema(description = "재료 이름", example = "[\"고기\", \"생선\"]")
-    private List<String> item;
+    @CollectionTable(name = "menu_item", joinColumns = @JoinColumn(name = "menu_idx"))
+    @Schema(description = "재료 목록", example = "[{\"ingredient\": \"고기\", \"price\": 3000}, {\"ingredient\": \"생선\", \"price\": 2000}]")
+    private List<MenuItem> item;
+
 
     @Column(length = 500)
     @Schema(description = "이미지", example = "https://")
     private String img;
 
     @Builder
-    public Menu(String name, String content, List<String> item, String img){
+    public Menu(String name, String content, List<MenuItem> item, String img){
         this.name=name;
         this.content=content;
         this.item=item;
