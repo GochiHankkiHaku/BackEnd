@@ -39,8 +39,8 @@ target/
 gradle/
 build/
 
-
-
+./gradle
+.idea/
 # Database
 *.db
 *.sqlite
@@ -50,3 +50,10 @@ build/
 # OS-specific
 .DS_Store
 Thumbs.db
+
+*.class
+*.jar
+*.war
+/target/
+/out/
+/logs/

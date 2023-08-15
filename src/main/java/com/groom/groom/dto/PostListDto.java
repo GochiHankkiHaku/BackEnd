@@ -26,18 +26,20 @@ public class PostListDto {
     private int max;
     @Schema(description = "도로명주소", example = "제주도 제주시~~~")
     private String address;
-    @Schema(description = "상세주소", example = "900동 000호")
-    private String detailAdd;
     @Schema(description = "상태", example = "C")
     private char status;
     @Schema(description = "위도", example = "33.449967")
     private double lat;
     @Schema(description = "경도", example = "126.918558")
     private double lng;
-    @Schema(description = "비용", example = "20000")
-    private int money;
     @Schema(description = "이미지", example = "https://")
     private String img;
+    //최고에요, 좋아요 추가
+    @Schema(description = "최고에요", example = "1")
+    private int greate;
+    @Schema(description = "좋아요", example = "1")
+    private int good;
+
     public PostListDto(@NotNull Post entity){
         this.post_idx=entity.getIdx();
         this.menuname = entity.getMenu().getName();
@@ -46,12 +48,12 @@ public class PostListDto {
         this.min =entity.getMin();
         this.max=entity.getMax();
         this.address=entity.getAddress();
-        this.detailAdd=entity.getDetailAdd();
         this.status=entity.getStatus();
         this.lat=entity.getLat();
         this.lng=entity.getLng();
-        this.money=entity.getMoney();
         this.img=entity.getImg();
+        this.greate=entity.getUser().getGreat();
+        this.good=entity.getUser().getGood();
     }
 
 }
