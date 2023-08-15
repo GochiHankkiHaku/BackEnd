@@ -1,6 +1,7 @@
 package com.groom.groom.dto;
 
 import com.groom.groom.domain.Menu;
+import com.groom.groom.domain.MenuItem;
 import com.groom.groom.domain.Post;
 import com.groom.groom.domain.Users;
 import com.groom.groom.repository.PostRepository;
@@ -27,7 +28,7 @@ public class PostResponseDto {
     @Schema(description = "신청인원", example = "1")
     private int application;
     @Schema(description = "주 재료", example = "갈치")
-    private List<String> item;
+    private List<MenuItem> item;
     @Schema(description = "도로명주소", example = "제주도 제주시~~~")
     private String address;
     @Schema(description = "비용", example = "20000")
@@ -41,8 +42,6 @@ public class PostResponseDto {
         this.menucontent=entity.getMenu().getContent();
         this.date=entity.getDate();
         this.time= entity.getTime();
-
-
         this.item=entity.getMenu().getItem();
         this.address=entity.getAddress();
         this.status = entity.getStatus();
