@@ -39,7 +39,8 @@ public class PostListDto {
     private int greate;
     @Schema(description = "좋아요", example = "1")
     private int good;
-
+    @Schema(description = "선택한 명수", example = "1")
+    private int choose;
     public PostListDto(@NotNull Post entity){
         this.post_idx=entity.getIdx();
         this.menuname = entity.getMenu().getName();
@@ -54,6 +55,7 @@ public class PostListDto {
         this.img=entity.getImg();
         this.greate=entity.getUser().getGreat();
         this.good=entity.getUser().getGood();
+        this.choose=entity.getMenu().getChoose();
     }
 
 }

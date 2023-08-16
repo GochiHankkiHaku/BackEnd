@@ -41,12 +41,22 @@ public class Menu {
     @Schema(description = "이미지", example = "https://")
     private String img;
 
+    @Column(nullable = false,columnDefinition = "integer default 0")
+    @Schema(description = "메뉴 선택한 사람 명", example = "1")
+    private int choose;
+
     @Builder
-    public Menu(String name, String content, List<MenuItem> item, String img){
+    public Menu(String name, String content, List<MenuItem> item, String img, int choose){
         this.name=name;
         this.content=content;
         this.item=item;
         this.img=img;
+        this.choose=choose;
     }
+
+    public void chooseUp(){
+        this.choose +=1;
+    }
+
 
 }
