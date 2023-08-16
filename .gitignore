@@ -36,11 +36,13 @@ target/
 *.settings
 
 # Gradle
+# Gradle
+.gradle/
 gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
 
 build/
-build
-.gradle/
 .build/
 # Database
 *.db
