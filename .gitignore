@@ -38,6 +38,10 @@ target/
 # Gradle
 # Gradle
 .gradle/
+!gradlew
+!gradlew.bat
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
 
 
 build/
@@ -51,10 +55,6 @@ build/
 # OS-specific
 .DS_Store
 Thumbs.db
-
-*.class
-*.jar
-*.war
 /target/
 /out/
 /logs/
