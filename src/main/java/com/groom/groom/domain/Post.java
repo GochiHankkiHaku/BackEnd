@@ -10,6 +10,8 @@ import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @NoArgsConstructor
@@ -33,6 +35,10 @@ public class Post extends BaseTimeEntity {
     @JoinColumn(name = "menu_idx")
     @JsonIgnore
     private Menu menu;
+
+    @Column(nullable = true)
+    @Schema(description = "년도날짜", example = "2023-07-23" )
+    private LocalDate realdate;
 
     @Column(length = 50, nullable = false)
     @Schema(description = "날짜", example = "오늘")
