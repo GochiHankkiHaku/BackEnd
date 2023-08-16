@@ -38,8 +38,6 @@ target/
 # Gradle
 # Gradle
 .gradle/
-gradle/
-!gradle/wrapper/gradle-wrapper.jar
 
 
 build/
