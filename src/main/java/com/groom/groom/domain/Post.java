@@ -10,6 +10,8 @@ import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @NoArgsConstructor
@@ -34,9 +36,15 @@ public class Post extends BaseTimeEntity {
     @JsonIgnore
     private Menu menu;
 
+    @Column(nullable = true)
+    @Schema(description = "년도날짜", example = "2023-07-23" )
+    private LocalDate realdate;
+
     @Column(length = 50, nullable = false)
     @Schema(description = "날짜", example = "오늘")
     private String date;
+
+
 
     @Column(length = 50, nullable = false)
     @Schema(description = "시간", example = "오전")
@@ -85,12 +93,13 @@ public class Post extends BaseTimeEntity {
 
 
     @Builder
-    public Post(Users user, Menu menu, String date, String time, int min, int max,
+    public Post(Users user, Menu menu, String date, LocalDate realdate, String time, int min, int max,
                 double lat, double lng, int money, char status, String img, String contact,
                 String address, String detailAdd){
         this.menu=menu;
         this.user=user;
         this.date=date;
+        this.realdate=realdate;
         this.time=time;
         this.min=min;
         this.max=max;

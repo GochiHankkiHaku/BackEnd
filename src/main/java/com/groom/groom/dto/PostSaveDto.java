@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @NoArgsConstructor
@@ -22,6 +24,8 @@ public class PostSaveDto {
     private String menuname;
     @Schema(description = "날짜", example = "오늘")
     private String date;
+    @Schema(description = "년도날짜", example = "2023-07-23")
+    private LocalDate realdate;
     @Schema(description = "시간", example = "아침")
     private String time;
     @Schema(description = "인원", example = "1")
@@ -45,9 +49,15 @@ public class PostSaveDto {
     @Schema(description = "연락수단", example = "전화번호/카카오톡id/옾챗")
     private String contact;
     public Post toEntity(){
+        if ("오늘".equals(date)) {
+            realdate = LocalDate.now();
+        } else if ("내일".equals(date)) {
+            realdate = LocalDate.now().plus(1, ChronoUnit.DAYS);
+        }
         return Post.builder()
                 .user(user)
                 .date(date)
+                .realdate(realdate)  // 추가된 부분
                 .time(time)
                 .min(min)
                 .max(max)

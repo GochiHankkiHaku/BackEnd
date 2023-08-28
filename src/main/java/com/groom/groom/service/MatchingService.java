@@ -37,6 +37,14 @@ public class MatchingService {
         return matchingRepository.findByPost(post);
     }
 
+    //매칭글 신청 리스트
+    public List<Matching> getMatchRequestsByUser(int user_idx) {
+        Users user = usersRepository.findById(user_idx)
+                .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
+        return matchingRepository.findByUser(user);
+    }
+
+
     public void okMatch(int matching_idx) {
         Matching matching = matchingRepository.findById(matching_idx)
                 .orElseThrow(() -> new RuntimeException("매칭 신청을 찾을 수 없습니다."));
