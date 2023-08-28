@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -27,10 +28,15 @@ public class MenuSaveDto {
     }
 
     public Menu toEntity(){
+        List<MenuItem> menuItems = new ArrayList<>();
+        for (MenuItem menuItemDto : item) {
+            menuItems.add(new MenuItem(menuItemDto.getIngredient(), menuItemDto.getPrice()));
+        }
         return Menu.builder()
                 .name(name)
                 .content(content)
                 .item(item)
+                .item(menuItems)
                 .build();
     }
 }

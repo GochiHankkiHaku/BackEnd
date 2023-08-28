@@ -44,6 +44,9 @@ public class PostService {
         } else if ("한치 물회 덮밥".equals(menuname)) {
             postSaveDto.setImg("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/%EB%8C%80%EC%A7%80%201%20%EC%82%AC%EB%B3%B8%209.png");
         }
+        else if ("갈치조림".equals(menuname)) {
+            postSaveDto.setImg("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/%EB%8C%80%EC%A7%80%201%20%EC%82%AC%EB%B3%B8%209.png");
+        }
         menu.chooseUp();
         menuRepository.save(menu);
 

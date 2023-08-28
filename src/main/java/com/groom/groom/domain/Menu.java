@@ -31,7 +31,7 @@ public class Menu {
     @Schema(description = "내용", example = "갈치를 고추장에 조려서~~")
     private String content;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "menu_item", joinColumns = @JoinColumn(name = "menu_idx"))
     @Schema(description = "재료 목록", example = "[{\"ingredient\": \"고기\", \"price\": 3000}, {\"ingredient\": \"생선\", \"price\": 2000}]")
     private List<MenuItem> item;
@@ -45,6 +45,11 @@ public class Menu {
     @Schema(description = "메뉴 선택한 사람 명", example = "1")
     private int choose;
 
+    @Column(nullable = false)
+    @Schema(description = "전체 가격", example = "5000")
+    private int totalPrice;
+
+
     @Builder
     public Menu(String name, String content, List<MenuItem> item, String img, int choose){
         this.name=name;
@@ -52,10 +57,16 @@ public class Menu {
         this.item=item;
         this.img=img;
         this.choose=choose;
+        this.totalPrice = calculateTotalPrice(item);
+
     }
 
     public void chooseUp(){
         this.choose +=1;
+    }
+
+    private int calculateTotalPrice(List<MenuItem> items) {
+        return items.stream().mapToInt(MenuItem::getPrice).sum();
     }
 
 
