@@ -12,7 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 public class MenuListDto {
-
+    @Schema(description = "idx", example = "1")
+    private int menu_idx;
     @Schema(description = "이름", example = "갈치조림")
     private String name;
     @Schema(description = "설명", example = "갈치를 고추장에 조려서~~")
@@ -24,6 +25,7 @@ public class MenuListDto {
 
 
     public MenuListDto(@NotNull Menu entity){
+        this.menu_idx=entity.getIdx();
         this.name=entity.getName();
         this.content=entity.getContent();
         this.item=entity.getItem();

@@ -30,7 +30,7 @@ public class MenuSaveDto {
     public Menu toEntity(){
         List<MenuItem> menuItems = new ArrayList<>();
         for (MenuItem menuItemDto : item) {
-            menuItems.add(new MenuItem(menuItemDto.getIngredient(), menuItemDto.getPrice()));
+            menuItems.add(new MenuItem(menuItemDto.getIdx(), menuItemDto.getIngredient(), menuItemDto.getPrice(), menuItemDto.getUrl()));
         }
         return Menu.builder()
                 .name(name)

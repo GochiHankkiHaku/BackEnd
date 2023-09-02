@@ -37,27 +37,27 @@ public class SetupContorller {
 
         List<MenuItem> item1 = new ArrayList<>();
 
-        item1.add(MenuItem.builder().ingredient("성게").price(10000).build());
-        item1.add(MenuItem.builder().ingredient("고사리").price(2000).build());
-        item1.add(MenuItem.builder().ingredient("대추").price(2000).build());
-        item1.add(MenuItem.builder().ingredient("마늘").price(2000).build());
-        item1.add(MenuItem.builder().ingredient("고추가루").price(2000).build());
-        item1.add(MenuItem.builder().ingredient("된장").price(2000).build());
+        item1.add(MenuItem.builder().idx(0).ingredient("성게").price(10000).url("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png").build());
+        item1.add(MenuItem.builder().idx(1).ingredient("고사리").price(2000).url("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png").build());
+        item1.add(MenuItem.builder().idx(2).ingredient("대추").price(2000).url("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png").build());
+        item1.add(MenuItem.builder().idx(3).ingredient("마늘").price(2000).url("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png").build());
+        item1.add(MenuItem.builder().idx(4).ingredient("고추가루").price(2000).url("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png").build());
+        item1.add(MenuItem.builder().idx(5).ingredient("된장").price(2000).url("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png").build());
 
         List<MenuItem> item2 = new ArrayList<>();
-        item2.add(MenuItem.builder().ingredient("자리돔").price(10000).build());
-        item2.add(MenuItem.builder().ingredient("간장").price(2000).build());
-        item2.add(MenuItem.builder().ingredient("설탕").price(2000).build());
-        item2.add(MenuItem.builder().ingredient("생강").price(2000).build());
-        item2.add(MenuItem.builder().ingredient("고추장").price(2000).build());
+        item2.add(MenuItem.builder().idx(0).ingredient("자리돔").price(10000).url("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png").build());
+        item2.add(MenuItem.builder().idx(1).ingredient("간장").price(2000).url("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png").build());
+        item2.add(MenuItem.builder().idx(2).ingredient("설탕").price(2000).url("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png").build());
+        item2.add(MenuItem.builder().idx(3).ingredient("생강").price(2000).url("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png").build());
+        item2.add(MenuItem.builder().idx(4).ingredient("고추장").price(2000).url("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png").build());
 
 
         List<MenuItem> item3 = new ArrayList<>();
-        item3.add(MenuItem.builder().ingredient("한치").price(10000).build());
-        item3.add(MenuItem.builder().ingredient("양배추").price(3000).build());
-        item3.add(MenuItem.builder().ingredient("미나리").price(3000).build());
-        item3.add(MenuItem.builder().ingredient("오이").price(3000).build());
-        item3.add(MenuItem.builder().ingredient("배").price(3000).build());
+        item3.add(MenuItem.builder().idx(0).ingredient("한치").price(10000).url("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png").build());
+        item3.add(MenuItem.builder().idx(1).ingredient("양배추").price(3000).url("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png").build());
+        item3.add(MenuItem.builder().idx(2).ingredient("미나리").price(3000).url("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png").build());
+        item3.add(MenuItem.builder().idx(3).ingredient("오이").price(3000).url("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png").build());
+        item3.add(MenuItem.builder().idx(4).ingredient("배").price(3000).url("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png").build());
 
 
 
@@ -80,8 +80,8 @@ public class SetupContorller {
                 .time("아침 (8:00 ~ 10:00)")
                 .min(1)
                 .max(3)
-                .lat(33.449967)
-                .lng(126.918558)
+                .lat(37.505385)
+                .lng(126.942561)
                 .address("제주특별자치도 서귀포시 성산읍 동류암로 20")
                 .detailAdd("000동 000호")
                 .status('N')
@@ -100,8 +100,8 @@ public class SetupContorller {
                 .time("점심 (10:00 ~ 12:00)")
                 .min(2)
                 .max(3)
-                .lat(33.449701)
-                .lng(126.917109)
+                .lat(37.505819)
+                .lng(126.946506)
                 .address("제주특별자치도 서귀포시 성산읍 동류암로 26")
                 .status('N')
                 .money(20000) // 추가: money 필드 초기화
@@ -119,8 +119,8 @@ public class SetupContorller {
                 .max(3)
                 .contact("010-")
 
-                .lat(33.449967)
-                .lng(126.918558)
+                .lat(37.505383)
+                .lng(126.94532)
                 .address("제주특별자치도 서귀포시 성산읍 동류암로 20")
                 .status('N')
                 .money(20000) // 추가: money 필드 초기화
@@ -137,8 +137,8 @@ public class SetupContorller {
                 .contact("010-")
 
                 .detailAdd("000동 000호")
-                .lat(33.450285)
-                .lng(126.91751)
+                .lat(37.505390)
+                .lng(126.94745)
                 .address("제주특별자치도 제주시 고마로13길 32")
                 .status('N')
                 .money(20000) // 추가: money 필드 초기화
@@ -155,8 +155,8 @@ public class SetupContorller {
                 .detailAdd("000동 000호")
                 .contact("010-")
 
-                .lat(33.449148)
-                .lng(126.913911)
+                .lat(37.505370)
+                .lng(126.94532)
                 .address("제주특별자치도 서귀포시 성산읍 고성오조로 55")
                 .status('N')
                 .money(20000) // 추가: money 필드 초기화
@@ -170,8 +170,8 @@ public class SetupContorller {
                 .time("저녁 (16:00 ~ 18:00)")
                 .min(2)
                 .max(3)
-                .lat(33.445487)
-                .lng(126.900651)
+                .lat(37.505353)
+                .lng(126.94537)
                 .address("제주특별자치도 서귀포시 성산읍 서성일로 1139")
                 .status('N')
                 .detailAdd("000동 000호")
@@ -188,8 +188,8 @@ public class SetupContorller {
                 .time("저녁 (16:00 ~ 18:00)")
                 .min(2)
                 .max(3)
-                .lat(33.450701)
-                .lng(126.570667)
+                .lat(37.505363)
+                .lng(126.94550)
                 .address("제주특별자치도제주시 첨단로 242")
                 .status('N')
                 .detailAdd("000동 000호")
