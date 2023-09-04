@@ -33,6 +33,11 @@ public class Users {
     @Schema(description = "좋아요", example = "1")
     private int good;
 
+
+    @Column(nullable = false, columnDefinition = "integer default 0")
+    @Schema(description = "별로에요", example = "1")
+    private int notgood;
+
     @Builder
     public Users(String id){
         this.id=id;
