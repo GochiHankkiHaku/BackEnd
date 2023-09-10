@@ -27,13 +27,13 @@ public class PostService {
 
     @Transactional
     public Post save(PostSaveDto postSaveDto) {
-        Users user = new Users();
-        user.setId("a");
+        Users user = usersRepository.findById(1)
+                .orElseThrow(() -> new RuntimeException("유저를 찾을 수 없습니다."));
         usersRepository.save(user);
         postSaveDto.setUser(user);
 
         String menuname = postSaveDto.getMenuname();
-        Menu menu = menuRepository.findByName(menuname); // 메뉴 이름으로 메뉴 조회
+        Menu menu = menuRepository.findByName(menuname);
         menu.chooseUp();
         menuRepository.save(menu);
 
@@ -110,6 +110,13 @@ public class PostService {
     public void delete(int idx){
         Post entity = postRepository.findById(idx).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id="+idx));
         entity.delete();
+    }
+
+    //완료
+    @Transactional
+    public void complete(int idx){
+        Post entity = postRepository.findById(idx).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id="+idx));
+        entity.complete();
     }
 
 }

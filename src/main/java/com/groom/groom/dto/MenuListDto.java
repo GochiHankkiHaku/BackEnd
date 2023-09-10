@@ -25,7 +25,6 @@ public class MenuListDto {
     @Schema(description = "평균 가격", example = "20000")
     private int total;
 
-
     public MenuListDto(@NotNull Menu entity){
         this.menu_idx=entity.getIdx();
         this.name=entity.getName();
@@ -33,9 +32,5 @@ public class MenuListDto {
         this.img=entity.getImg();
         this.item=entity.getItem();
         this.total=entity.getTotalPrice();
-
     }
-
-
-
 }

@@ -77,4 +77,10 @@ public class PostContorller {
     }
 
 
+    @PutMapping("/complete/{post_idx}")
+    @Operation(summary = "post/complete/{post_idx}",description = "매칭 글 완료")
+    public ResponseEntity<Void> complete(@PathVariable int post_idx){
+        postService.complete(post_idx);
+        return ResponseEntity.ok().build();
+    }
 }
