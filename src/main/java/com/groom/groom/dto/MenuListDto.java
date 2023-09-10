@@ -18,6 +18,8 @@ public class MenuListDto {
     private String name;
     @Schema(description = "설명", example = "갈치를 고추장에 조려서~~")
     private String content;
+    @Schema(description = "메뉴 이미지", example = "메뉴 이미지 url")
+    private String img;
     @Schema(description = "재료 목록", example = "[{\"ingredient\": \"고기\", \"price\": 3000}, {\"ingredient\": \"생선\", \"price\": 2000}]")
     private List<MenuItem> item;
     @Schema(description = "평균 가격", example = "20000")
@@ -28,6 +30,7 @@ public class MenuListDto {
         this.menu_idx=entity.getIdx();
         this.name=entity.getName();
         this.content=entity.getContent();
+        this.img=entity.getImg();
         this.item=entity.getItem();
         this.total=entity.getTotalPrice();
 
