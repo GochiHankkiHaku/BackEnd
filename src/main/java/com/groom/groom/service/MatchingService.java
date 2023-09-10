@@ -6,9 +6,12 @@ import com.groom.groom.repository.MatchingRepository;
 import com.groom.groom.repository.PostRepository;
 import com.groom.groom.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -18,17 +21,15 @@ public class MatchingService {
     private final UsersRepository usersRepository;
     private final MatchingRepository matchingRepository;
     @Transactional
-    public Matching saveMatching(int post_idx, int user_idx){
+    public Matching saveMatching(int post_idx, int user_idx, String contact){
         Post post = postRepository.findById(post_idx)
                 .orElseThrow(() -> new RuntimeException("게시글을 찾을 수 없습니다."));
         Users user = usersRepository.findById(user_idx)
                 .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
-        Matching matching = new Matching(user, post);
+        Matching matching = new Matching(user, post.getUser(), post, contact);
 
         return matchingRepository.save(matching);
     }
-
-
 
     //매칭 신청자 리스트
     public List<Matching> getMatchRequestsByPost(int post_idx) {
@@ -57,6 +58,22 @@ public class MatchingService {
                 .orElseThrow(() -> new RuntimeException("매칭 신청을 찾을 수 없습니다."));
         matching.setStatus(MatchingStatus.NO);
         matchingRepository.save(matching);
+    }
+
+
+    @Transactional
+    public List<Matching> getMatchingsByUser(int user_idx) {
+        Users user = usersRepository.findById(user_idx)
+                .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
+        return matchingRepository.findByUser(user);
+    }
+
+    @Transactional
+    public List<Matching> getMatchingsByOpener(int user_idx) {
+        Users user = usersRepository.findById(user_idx)
+                .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
+        System.out.println(user);
+        return matchingRepository.findByOpener(user);
     }
 
 }

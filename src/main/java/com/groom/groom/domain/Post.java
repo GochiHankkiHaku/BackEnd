@@ -75,11 +75,6 @@ public class Post extends BaseTimeEntity {
     private char status;
 
     @Column(nullable = false)
-    @Schema(description = "글 이미지", example = "https://~~~")
-    private String img;
-
-
-    @Column(nullable = false)
     @Schema(description = "연락수단", example = "전화번호/카카오톡id/옾챗")
     private String contact;
 
@@ -94,7 +89,7 @@ public class Post extends BaseTimeEntity {
 
     @Builder
     public Post(Users user, Menu menu, String date, LocalDate realdate, String time, int min, int max,
-                double lat, double lng, int money, char status, String img, String contact,
+                double lat, double lng, int money, char status, String contact,
                 String address, String detailAdd){
         this.menu=menu;
         this.user=user;
@@ -107,14 +102,13 @@ public class Post extends BaseTimeEntity {
         this.lng=lng;
         this.money=money;
         this.status=status;
-        this.img=img;
         this.contact=contact;
         this.address=address;
         this.detailAdd=detailAdd;
     }
 
     public void update(Menu menu, String date, String time, int min, int max,
-                       double lat, double lng, int money, String img, String contact,
+                       double lat, double lng, int money, String contact,
                        String address, String detailAdd
     ){
         this.menu=menu;
@@ -125,7 +119,6 @@ public class Post extends BaseTimeEntity {
         this.lat=lat;
         this.lng=lng;
         this.money=money;
-        this.img=img;
         this.contact=contact;
         this.address=address;
         this.detailAdd=detailAdd;

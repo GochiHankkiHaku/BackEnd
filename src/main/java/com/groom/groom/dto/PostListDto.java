@@ -32,8 +32,6 @@ public class PostListDto {
     private double lat;
     @Schema(description = "경도", example = "126.918558")
     private double lng;
-    @Schema(description = "이미지", example = "https://")
-    private String img;
     //최고에요, 좋아요 추가
     @Schema(description = "최고에요", example = "1")
     private int greate;
@@ -52,7 +50,6 @@ public class PostListDto {
         this.status=entity.getStatus();
         this.lat=entity.getLat();
         this.lng=entity.getLng();
-        this.img=entity.getImg();
         this.greate=entity.getUser().getGreat();
         this.good=entity.getUser().getGood();
         this.choose=entity.getMenu().getChoose();

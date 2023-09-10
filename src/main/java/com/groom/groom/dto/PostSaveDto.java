@@ -44,8 +44,6 @@ public class PostSaveDto {
     private char status;
     @Schema(description = "비용", example = "20000")
     private int money;
-    @Schema(description = "글 이미지", example = "https://~~~")
-    private String img;
     @Schema(description = "연락수단", example = "전화번호/카카오톡id/옾챗")
     private String contact;
     public Post toEntity(){
@@ -67,12 +65,10 @@ public class PostSaveDto {
                 .detailAdd(detailAdd)
                 .status('N')
                 .money(money)
-                .img(img)
                 .contact(contact)
                 .build();
     }
     public void setUser(Users user) {this.user = user;}
-    public void setImg(String url) {this.img = url;}
 
 
 }

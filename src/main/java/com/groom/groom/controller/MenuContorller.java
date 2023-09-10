@@ -35,6 +35,4 @@ public class MenuContorller {
         return ResponseEntity.status(HttpStatus.OK).body(list); // 조회된 메뉴 리스트를 응답으로 반환
     }
 
-
-
 }

@@ -11,5 +11,6 @@ public interface MatchingRepository extends JpaRepository<Matching, Integer> {
     List<Matching> findByPost(Post post);
     List<Matching> findByUser(Users user);
 
-    Matching findByUserAndPost(Users user, Post post);
+    List<Matching> findByOpener(Users opener);
+
 }

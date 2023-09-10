@@ -34,19 +34,6 @@ public class PostService {
 
         String menuname = postSaveDto.getMenuname();
         Menu menu = menuRepository.findByName(menuname); // 메뉴 이름으로 메뉴 조회
-        if (menu == null) {
-            // 메뉴가 존재하지 않는 경우에 대한 예외 처리
-            throw new IllegalArgumentException("해당 메뉴를 찾을 수 없습니다: " + menuname);
-        } else if ("구살국(성게국)".equals(menuname)) {
-            postSaveDto.setImg("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%80%E1%85%A6%E1%84%80%E1%85%AE%E1%86%A8.png");
-        } else if ("자리돔조림".equals(menuname)) {
-            postSaveDto.setImg("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/m_%E1%84%8C%E1%85%A1%E1%84%85%E1%85%B5%E1%84%83%E1%85%A9%E1%86%B7%E1%84%8C%E1%85%A9%E1%84%85%E1%85%B5%E1%86%B7.png");
-        } else if ("한치 물회 덮밥".equals(menuname)) {
-            postSaveDto.setImg("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/%EB%8C%80%EC%A7%80%201%20%EC%82%AC%EB%B3%B8%209.png");
-        }
-        else if ("갈치조림".equals(menuname)) {
-            postSaveDto.setImg("https://hibit2bucket.s3.ap-northeast-2.amazonaws.com/%EB%8C%80%EC%A7%80%201%20%EC%82%AC%EB%B3%B8%209.png");
-        }
         menu.chooseUp();
         menuRepository.save(menu);
 
@@ -114,7 +101,7 @@ public class PostService {
         Post post = postRepository.findById(idx).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id="+idx));
         Menu menu = menuRepository.findByName(requestDto.getMenuname()); // 메뉴 이름으로 메뉴 조회
         post.update(menu,requestDto.getDate(), requestDto.getTime(),requestDto.getMin(),requestDto.getMax(), requestDto.getLat(),
-                requestDto.getLng(), requestDto.getMoney(), requestDto.getImg(), requestDto.getContact(),
+                requestDto.getLng(), requestDto.getMoney(),requestDto.getContact(),
                 requestDto.getAddress(), requestDto.getDetailAdd());
         return post;
     }

@@ -3,11 +3,11 @@ package com.groom.groom.controller;
 import com.groom.groom.domain.Matching;
 
 import com.groom.groom.domain.Post;
-import com.groom.groom.dto.MatchingFinishDto;
-import com.groom.groom.dto.PostListDto;
+import com.groom.groom.dto.*;
 import com.groom.groom.repository.MatchingRepository;
 import com.groom.groom.repository.PostRepository;
 import com.groom.groom.service.MatchingService;
+import com.groom.groom.service.PostService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,26 +27,17 @@ public class MatchingContorller {
     private final MatchingService matchingService;
     private final PostRepository postRepository;
     private final MatchingRepository matchingRepository;
+    private final PostService postService;
 
     @PostMapping("/save/{post_idx}/{user_idx}")
     @Operation(summary = "matching/save/1/1", description = "매칭 신청")
-    public ResponseEntity<Matching> save(@PathVariable int post_idx, @PathVariable int user_idx){
+    public ResponseEntity<Matching> save(@PathVariable int post_idx, @PathVariable int user_idx, @RequestParam String contact){
         Post post= postRepository.findById(post_idx).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id="+post_idx));
-        Matching matching = matchingService.saveMatching(post_idx, user_idx);
+        Matching matching = matchingService.saveMatching(post_idx, user_idx, contact);
         return ResponseEntity.status(HttpStatus.CREATED).body(matching);
 
     }
 
-    //매칭 신청자 리스트 확인
-    @GetMapping("/list/{post_idx}")
-    @Operation(summary = "/matching/list/1", description = "매칭 신청자 리스트 확인")
-    public ResponseEntity<List<String>> getMatchRequestsByPost(@PathVariable int post_idx) {
-        List<Matching> matchRequests = matchingService.getMatchRequestsByPost(post_idx);
-        List<String> userIds = matchRequests.stream()
-                .map(matching -> matching.getUser().getId())
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(userIds);
-    }
     //매칭 수락
     @PutMapping("/ok/{matching_idx}")
     @Operation(summary = "/matching/ok/1", description = "매칭 수락")
@@ -62,11 +54,83 @@ public class MatchingContorller {
         return ResponseEntity.ok().build();
     }
 
-    //매칭 완료 리스트
-    @GetMapping("/completeList/{user_idx}")
-    @Operation(summary = "/matching/completeList/1", description = "매칭 완료 리스트")
-    public List<MatchingFinishDto> getMatchComplete(@PathVariable int user_idx) {
-        List<Matching> matchRequests = matchingService.getMatchRequestsByUser(user_idx);
-        return matchRequests.stream().map(MatchingFinishDto::new).collect(Collectors.toList());
+
+    //모임 히스토리 리스트
+    @GetMapping("/list/{user_idx}")
+    @Operation(summary = "/matching/list/1", description = "유저가 진행한 모든 매칭 리스트 반환")
+    public ResponseEntity<List<MatchingListDto>> getMatchingsByUser(@PathVariable int user_idx) {
+        List<MatchingListDto> matchingsByUserDto = new ArrayList<>();
+
+        if (user_idx==1) {
+            List<Matching> matchingsByOpener = matchingService.getMatchingsByOpener(user_idx);
+
+            for (Matching matching : matchingsByOpener) {
+                String address = matching.getPost().getAddress() + matching.getPost().getDetailAdd();
+                MatchingListDto dto = new MatchingListDto(
+                        matching.getPost().getMenu().getName(),
+                        address,
+                        matching.getPost().getMenu().getTotalPrice(),
+                        matching.getId(),
+                        matching.getPost().getIdx(),
+                        matching.getPostStatus(),
+                        matching.getPost().getRealdate()
+                );
+                matchingsByUserDto.add(dto);
+            }
+        }
+        else if(user_idx==2){
+                List<Matching> matchingsByUser = matchingService.getMatchingsByUser(user_idx);
+                for (Matching matching : matchingsByUser) {
+                    String address = matching.getPost().getAddress() + matching.getPost().getDetailAdd();
+                    MatchingListDto dto = new MatchingListDto(
+                            matching.getPost().getMenu().getName(),
+                            address,
+                            matching.getPost().getMenu().getTotalPrice(),
+                            matching.getId(),
+                            matching.getPost().getIdx(),
+                            matching.getPostStatus(),
+                            matching.getPost().getRealdate()
+                    );
+                    matchingsByUserDto.add(dto);
+                }
+        }
+        else {
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok(matchingsByUserDto);
     }
+    //모임 히스토리 개최자 디테일
+    @GetMapping("/detail/{matching_idx}")
+    @Operation(summary = "/matching/detail/1", description = "유저가 진행한 모든 매칭 리스트 반환")
+    public ResponseEntity<MatchingWriterDetailDto> getMatchingsByWriter(@PathVariable int matching_idx) {
+        Matching matchingEntity = matchingRepository.findById(matching_idx).orElseThrow(()-> new IllegalArgumentException("해당 매칭이 없습니다. id="+matching_idx));
+        Post post = postRepository.findById(matchingEntity.getPost().getIdx()).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다"));
+
+        List<Matching> matchRequests = matchingService.getMatchRequestsByPost(matchingEntity.getPost().getIdx());
+        List<MatchingUserDto> matchingUsers = matchRequests.stream()
+                .map(matching -> new MatchingUserDto(
+                        matching.getUser().getId(),
+                        matching.getId(),
+                        matching.getContact()))
+                .collect(Collectors.toList());
+        MatchingWriterDetailDto responseDto = new MatchingWriterDetailDto(post, matchingUsers);
+        return ResponseEntity.ok(responseDto);
+    }
+
+    //매칭 완료 처리하기
+    @PutMapping("/complete/{matching_idx}")
+    @Operation(summary = "/matching/complete/1", description = "매칭 완료")
+    public ResponseEntity<Void> complete(@PathVariable int matching_idx){
+        Matching matching = matchingRepository.findById(matching_idx)
+                .orElseThrow(() -> new RuntimeException("매칭 신청을 찾을 수 없습니다."));
+
+        Post post= postRepository.findById(matching.getPost().getIdx()).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다"));
+        post.complete();
+        postRepository.save(post);
+        return ResponseEntity.ok().build();
+    }
+
+
+
+
 }
