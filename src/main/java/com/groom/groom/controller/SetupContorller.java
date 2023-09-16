@@ -78,7 +78,7 @@ public class SetupContorller {
                 .user(user1)
                 .menu(menu1)
                 .date("오늘")
-                .realdate(LocalDate.now())
+                .realdate(LocalDate.of(2023, 9, 15))
                 .time("아침 (8:00 ~ 10:00)")
                 .min(1)
                 .max(3)
@@ -97,7 +97,7 @@ public class SetupContorller {
                 .user(user1)
                 .menu(menu2)
                 .date("오늘")
-                .realdate(LocalDate.now())
+                .realdate(LocalDate.of(2023, 9, 15))
 
                 .time("점심 (10:00 ~ 12:00)")
                 .min(2)
