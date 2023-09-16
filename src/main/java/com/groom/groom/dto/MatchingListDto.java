@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class MatchingListDto {
     private String menuName;
+    private String img;
     private String address;
     private int menuPrice;
     private int matchingIdx;
@@ -18,8 +19,9 @@ public class MatchingListDto {
     private char postStatus;
     private LocalDate postDate;
 
-    public MatchingListDto(String menuName, String address, int menuPrice, int matchingIdx, int postIdx, char postStatus, LocalDate postDate) {
+    public MatchingListDto(String menuName, String img, String address, int menuPrice, int matchingIdx, int postIdx, char postStatus, LocalDate postDate) {
         this.menuName = menuName;
+        this.img=img;
         this.address = address;
         this.menuPrice = menuPrice;
         this.matchingIdx = matchingIdx;

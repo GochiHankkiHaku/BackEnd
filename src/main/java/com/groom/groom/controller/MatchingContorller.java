@@ -68,6 +68,7 @@ public class MatchingContorller {
                 String address = post.getAddress() + post.getDetailAdd();
                 MatchingListDto dto = new MatchingListDto(
                         post.getMenu().getName(),
+                        post.getMenu().getImg(),
                         address,
                         post.getMenu().getTotalPrice(),
                         0,
@@ -84,6 +85,7 @@ public class MatchingContorller {
                     String address = matching.getPost().getAddress() + matching.getPost().getDetailAdd();
                     MatchingListDto dto = new MatchingListDto(
                             matching.getPost().getMenu().getName(),
+                            matching.getPost().getMenu().getImg(),
                             address,
                             matching.getPost().getMenu().getTotalPrice(),
                             matching.getId(),
