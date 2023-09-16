@@ -137,7 +137,7 @@ public class SetupContorller {
                 .date("내일")
                 .time("아침 (8:00 ~ 10:00)")
                 .contact("010-")
-                .realdate(LocalDate.now())
+                .realdate(LocalDate.of(2023, 9, 17))
 
                 .detailAdd("000동 000호")
                 .lat(37.505390)
