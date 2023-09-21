@@ -22,9 +22,8 @@ public class MatchingListDto {
     private char postStatus;
     private LocalDate postDate;
 
-    private int price;
 
-    public MatchingListDto(String menuName, String img, String address, int menuPrice, int matchingIdx, int postIdx, char postStatus, LocalDate postDate, int price) {
+    public MatchingListDto(String menuName, String img, String address, int menuPrice, int matchingIdx, int postIdx, char postStatus, LocalDate postDate) {
         this.menuName = menuName;
         this.img=img;
         this.address = address;
@@ -33,6 +32,5 @@ public class MatchingListDto {
         this.postIdx = postIdx;
         this.postStatus = postStatus;
         this.postDate = postDate;
-        this.price=price;
     }
 }

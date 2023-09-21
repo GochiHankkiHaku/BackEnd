@@ -19,6 +19,7 @@ public class MatchingWriterDetailDto {
     private String menucontent;
     @Schema(description = "메뉴 이미지", example = "https://img~~~")
     private String menuimg;
+    private int price;
     @Schema(description = "작성자", example = "a")
     private String writer;
     @Schema(description = "최고에요", example = "10")
@@ -33,10 +34,12 @@ public class MatchingWriterDetailDto {
     private List<MatchingUserDto> matchingUsers;
 
 
+
     public MatchingWriterDetailDto(@NotNull Post entity, List<MatchingUserDto> matchingUsers) {
         this.menuname = entity.getMenu().getName();
         this.menucontent = entity.getMenu().getContent();
         this.menuimg = entity.getMenu().getImg();
+        this.price=entity.getMenu().getTotalPrice();
         this.writer = entity.getUser().getId();
         this.great = entity.getUser().getGreat();
         this.good = entity.getUser().getGood();

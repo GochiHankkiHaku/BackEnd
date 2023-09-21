@@ -74,8 +74,7 @@ public class MatchingContorller {
                         0,
                         post.getIdx(),
                         post.getStatus(),
-                        post.getRealdate(),
-                        post.getMenu().getTotalPrice()
+                        post.getRealdate()
                 );
                 matchingsByUserDto.add(dto);
             }
@@ -92,8 +91,7 @@ public class MatchingContorller {
                             matching.getId(),
                             matching.getPost().getIdx(),
                             matching.getPostStatus(),
-                            matching.getPost().getRealdate(),
-                            matching.getPost().getMenu().getTotalPrice()
+                            matching.getPost().getRealdate()
                     );
                     matchingsByUserDto.add(dto);
                 }
