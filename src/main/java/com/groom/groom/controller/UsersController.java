@@ -1,6 +1,8 @@
 package com.groom.groom.controller;
 
+import com.groom.groom.domain.Post;
 import com.groom.groom.domain.Users;
+import com.groom.groom.repository.PostRepository;
 import com.groom.groom.repository.UsersRepository;
 import com.groom.groom.service.UsersService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 public class UsersController {
     private final UsersService usersService;
     private final UsersRepository usersRepository;
+    private final PostRepository postRepository;
 
     @PostMapping("/signup")
     @Operation(summary = "users/signup", description = "회원가입")
@@ -26,12 +29,12 @@ public class UsersController {
         return user.getId();
     }
 
-    @PutMapping("/review/{user_idx}")
-    @Operation(summary = "review/1", description = "리뷰 작성")
-    public Users review(@PathVariable int user_idx, @RequestParam String reviewType){
+    @PutMapping("/review/{user_idx}/{post_idx}")
+    @Operation(summary = "review/1/1", description = "리뷰 작성")
+    public Users review(@PathVariable int user_idx, @PathVariable int post_idx, @RequestParam String reviewType){
         Users user = usersRepository.findById(user_idx)
                 .orElseThrow(() -> new RuntimeException("유저를 찾을 수 없습니다."));
-
+        Post post= postRepository.findById(post_idx).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다."));
         switch (reviewType) {
             case "great":
                 user.setGreat(user.getGreat() + 1);
@@ -45,6 +48,8 @@ public class UsersController {
             default:
                 throw new IllegalArgumentException("유효하지 않은 리뷰 타입입니다.");
         }
+        post.writeReview();
+        postRepository.save(post);
         usersRepository.save(user);
         return user;
     }

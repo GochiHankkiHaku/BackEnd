@@ -1,5 +1,6 @@
 package com.groom.groom.dto;
 
+import com.groom.groom.domain.MatchingStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,9 +18,15 @@ public class MatchingUserDto {
     @Schema(description = "연락 수단", example = "user@example.com")
     private String contactMethod;
 
-    public MatchingUserDto(String username, int matchingIndex, String contactMethod) {
+    private boolean review;
+
+    private MatchingStatus status;
+
+    public MatchingUserDto(String username, int matchingIndex, String contactMethod, boolean review, MatchingStatus status) {
         this.username = username;
         this.matchingIndex = matchingIndex;
         this.contactMethod = contactMethod;
+        this.review=review;
+        this.status=status;
     }
 }

@@ -86,11 +86,15 @@ public class Post extends BaseTimeEntity {
     @Schema(description = "상세주소", example = "900동 000호")
     private String detailAdd;
 
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT false")
+    @Schema(description = "true")
+    private boolean review;
+
 
     @Builder
     public Post(Users user, Menu menu, String date, LocalDate realdate, String time, int min, int max,
                 double lat, double lng, int money, char status, String contact,
-                String address, String detailAdd){
+                String address, String detailAdd, boolean review){
         this.menu=menu;
         this.user=user;
         this.date=date;
@@ -105,6 +109,7 @@ public class Post extends BaseTimeEntity {
         this.contact=contact;
         this.address=address;
         this.detailAdd=detailAdd;
+        this.review=review;
     }
 
     public void update(Menu menu, String date, String time, int min, int max,
@@ -131,4 +136,8 @@ public class Post extends BaseTimeEntity {
         this.status = 'C';
     }
 
+    public void writeReview(){this.review=true;}
+    public boolean getReview() {
+        return this.review;
+    }
 }

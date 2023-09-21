@@ -74,7 +74,8 @@ public class MatchingContorller {
                         0,
                         post.getIdx(),
                         post.getStatus(),
-                        post.getRealdate()
+                        post.getRealdate(),
+                        post.getMenu().getTotalPrice()
                 );
                 matchingsByUserDto.add(dto);
             }
@@ -91,7 +92,8 @@ public class MatchingContorller {
                             matching.getId(),
                             matching.getPost().getIdx(),
                             matching.getPostStatus(),
-                            matching.getPost().getRealdate()
+                            matching.getPost().getRealdate(),
+                            matching.getPost().getMenu().getTotalPrice()
                     );
                     matchingsByUserDto.add(dto);
                 }
@@ -112,7 +114,10 @@ public class MatchingContorller {
                 .map(matching -> new MatchingUserDto(
                         matching.getUser().getId(),
                         matching.getId(),
-                        matching.getContact()))
+                        matching.getContact(),
+                        matching.getPost().getReview(),
+                        matching.getStatus()
+                ))
                 .collect(Collectors.toList());
         MatchingWriterDetailDto responseDto = new MatchingWriterDetailDto(post, matchingUsers);
         return ResponseEntity.ok(responseDto);

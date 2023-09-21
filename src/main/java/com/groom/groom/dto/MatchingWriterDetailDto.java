@@ -27,11 +27,11 @@ public class MatchingWriterDetailDto {
     private int good;
     @Schema(description = "도로명주소", example = "제주도 제주시~~~")
     private String address;
-
     @Schema(description = "주 재료", example = "갈치")
     private List<MenuItem> item;
     @Schema(description = "매칭 신청자 리스트", example = "신청한 사람들")
     private List<MatchingUserDto> matchingUsers;
+
 
     public MatchingWriterDetailDto(@NotNull Post entity, List<MatchingUserDto> matchingUsers) {
         this.menuname = entity.getMenu().getName();

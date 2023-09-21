@@ -1,9 +1,12 @@
 package com.groom.groom.dto;
 
+import com.groom.groom.domain.MatchingStatus;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.time.LocalDate;
 
 @Getter
@@ -19,7 +22,9 @@ public class MatchingListDto {
     private char postStatus;
     private LocalDate postDate;
 
-    public MatchingListDto(String menuName, String img, String address, int menuPrice, int matchingIdx, int postIdx, char postStatus, LocalDate postDate) {
+    private int price;
+
+    public MatchingListDto(String menuName, String img, String address, int menuPrice, int matchingIdx, int postIdx, char postStatus, LocalDate postDate, int price) {
         this.menuName = menuName;
         this.img=img;
         this.address = address;
@@ -28,5 +33,6 @@ public class MatchingListDto {
         this.postIdx = postIdx;
         this.postStatus = postStatus;
         this.postDate = postDate;
+        this.price=price;
     }
 }
